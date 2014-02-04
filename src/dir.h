@@ -48,9 +48,9 @@ public slots:
     QString dirName()
     { return qdir.dirName(); };
     
-    // QFileInfoList   entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
+    // QFileInfoList entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
     
-    // QFileInfoList   entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort)
+    // QFileInfoList entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort)
     
     // QStringList entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
     
@@ -66,7 +66,6 @@ public slots:
     { return qdir.filePath(fileName);};
     
     // Filters filter()
-    // { return qdir.filter(); };
     
     bool isAbsolute()
     { return qdir.isAbsolute(); };
@@ -156,7 +155,8 @@ public slots:
     QString fromNativeSeparators(const QString & pathName)
     { return QDir::fromNativeSeparators(pathName); };
     
-    // QDir home()
+    Dir* home()
+    { return new Dir(QDir::home()); };
     
     QString homePath()
     { return QDir::homePath(); };
@@ -173,7 +173,8 @@ public slots:
     bool match(const QStringList & filters, const QString & fileName)
     { return QDir::match(filters, fileName); };
     
-    // QDir root()
+    Dir* root()
+    { return new Dir(QDir::root()); };
     
     QString rootPath()
     { return QDir::rootPath(); };
@@ -190,7 +191,8 @@ public slots:
     void setSearchPaths(const QString & prefix, const QStringList & searchPaths)
     { return QDir::setSearchPaths(prefix, searchPaths); };
     
-    // QDir temp()
+    Dir* temp()
+    { return new Dir(QDir::temp()); };
     
     QString tempPath()
     { return QDir::tempPath(); };
