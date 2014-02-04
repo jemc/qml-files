@@ -9,6 +9,13 @@ TestCase {
   name: "Dir"
   
   function test_it() {
-    verify(Dir.value==8)
+    verify(Dir.cleanPath("/test/path").length > 0)
+    verify(Dir.currentPath().length > 0)
+    verify(Dir.fromNativeSeparators("/test/path").length > 0)
+    verify(Dir.homePath().length > 0)
+    verify(Dir.rootPath().length > 0)
+    verify(Dir.separator().length == 1)
+    verify(Dir.tempPath().length > 0)
+    verify(Dir.fromNativeSeparators("\\test\\path").length > 0)
   }
 }
