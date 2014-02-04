@@ -19,8 +19,118 @@ public:
     QDir qdir;
     
 public slots:
+    // QDir(const QDir & dir)
+    
+    // QDir(const QString & path = QString())
+    
+    // QDir(const QString & path, const QString & nameFilter, SortFlags sort = SortFlags( Name | IgnoreCase ), Filters filters = AllEntries)
+    
+    // ~QDir()
+    
+    QString absoluteFilePath(const QString & fileName)
+    { return qdir.absoluteFilePath(fileName);};
+    
+    QString absolutePath()
+    { return qdir.absolutePath(); };
+    
+    QString canonicalPath()
+    { return qdir.canonicalPath(); };
+    
+    bool cd(const QString & dirName)
+    { return qdir.cd(dirName);};
+    
+    bool cdUp()
+    { return qdir.cdUp(); };
+    
+    uint count()
+    { return qdir.count(); };
+    
+    QString dirName()
+    { return qdir.dirName(); };
+    
+    // QFileInfoList   entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
+    
+    // QFileInfoList   entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort)
+    
+    // QStringList entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
+    
+    // QStringList entryList(Filters filters = NoFilter, SortFlags sort = NoSort)
+    
+    bool exists(const QString & name)
+    { return qdir.exists(name); };
+    
+    bool exists()
+    { return qdir.exists(); };
+    
+    QString filePath(const QString & fileName)
+    { return qdir.filePath(fileName);};
+    
+    // Filters filter()
+    // { return qdir.filter(); };
+    
+    bool isAbsolute()
+    { return qdir.isAbsolute(); };
+    
+    bool isReadable()
+    { return qdir.isReadable(); };
+    
+    bool isRelative()
+    { return qdir.isRelative(); };
+    
+    bool isRoot()
+    { return qdir.isRoot(); };
+    
+    bool makeAbsolute()
+    { return qdir.makeAbsolute(); };
+    
+    bool mkdir(const QString & dirName)
+    { return qdir.mkdir(dirName);  };
+    
+    bool mkpath(const QString & dirPath)
+    { return qdir.mkpath(dirPath); };
+    
+    QStringList nameFilters()
+    { return qdir.nameFilters(); };
+    
     QString path()
     { return qdir.path(); };
+    
+    void refresh()
+    { return qdir.refresh(); };
+    
+    QString relativeFilePath(const QString & fileName)
+    { return qdir.relativeFilePath(fileName);};
+    
+    bool remove(const QString & fileName)
+    { return qdir.remove(fileName); };
+    
+    bool removeRecursively()
+    { return qdir.removeRecursively(); };
+    
+    bool rename(const QString & oldName, const QString & newName)
+    { return qdir.rename(oldName, newName); };
+    
+    bool rmdir(const QString & dirName)
+    { return qdir.rmdir(dirName); };
+    
+    bool rmpath(const QString & dirPath)
+    { return qdir.rmpath(dirPath); };
+    
+    // void    setFilter(Filters filters)
+    
+    void setNameFilters(const QStringList & nameFilters)
+    { return qdir.setNameFilters(nameFilters);};
+    
+    void setPath(const QString & path)
+    { return qdir.setPath(path);};
+    
+    // void    setSorting(SortFlags sort)
+    
+    // SortFlags   sorting()
+    // { return qdir.sorting(); };
+    
+    void swap(QDir & other)
+    { return qdir.swap(other);};
 };
 
 
