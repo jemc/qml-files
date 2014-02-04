@@ -135,3 +135,8 @@ QString FileInfo::suffix()
 
 QString FileInfo::symLinkTarget()
 { return qfileinfo.symLinkTarget(); };
+
+
+
+bool FileInfoAttached::exists(const QString & file)
+{ return QFileInfo::exists(file); };

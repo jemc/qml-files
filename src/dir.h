@@ -16,120 +16,47 @@ public:
     Dir() { qdir = QDir(""); };
     Dir(const QDir& dir) { qdir = QDir(dir); };
     
+private:
     QDir qdir;
     
 public slots:
-    // QDir(const QDir & dir)
-    
-    // QDir(const QString & path = QString())
-    
-    // QDir(const QString & path, const QString & nameFilter, SortFlags sort = SortFlags( Name | IgnoreCase ), Filters filters = AllEntries)
-    
-    // ~QDir()
-    
-    QString absoluteFilePath(const QString & fileName)
-    { return qdir.absoluteFilePath(fileName);};
-    
-    QString absolutePath()
-    { return qdir.absolutePath(); };
-    
-    QString canonicalPath()
-    { return qdir.canonicalPath(); };
-    
-    bool cd(const QString & dirName)
-    { return qdir.cd(dirName);};
-    
-    bool cdUp()
-    { return qdir.cdUp(); };
-    
-    uint count()
-    { return qdir.count(); };
-    
-    QString dirName()
-    { return qdir.dirName(); };
-    
-    // QFileInfoList entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
-    
-    // QFileInfoList entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort)
-    
-    // QStringList entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
-    
-    // QStringList entryList(Filters filters = NoFilter, SortFlags sort = NoSort)
-    
-    bool exists(const QString & name)
-    { return qdir.exists(name); };
-    
-    bool exists()
-    { return qdir.exists(); };
-    
-    QString filePath(const QString & fileName)
-    { return qdir.filePath(fileName);};
-    
-    // Filters filter()
-    
-    bool isAbsolute()
-    { return qdir.isAbsolute(); };
-    
-    bool isReadable()
-    { return qdir.isReadable(); };
-    
-    bool isRelative()
-    { return qdir.isRelative(); };
-    
-    bool isRoot()
-    { return qdir.isRoot(); };
-    
-    bool makeAbsolute()
-    { return qdir.makeAbsolute(); };
-    
-    bool mkdir(const QString & dirName)
-    { return qdir.mkdir(dirName);  };
-    
-    bool mkpath(const QString & dirPath)
-    { return qdir.mkpath(dirPath); };
-    
-    QStringList nameFilters()
-    { return qdir.nameFilters(); };
-    
-    QString path()
-    { return qdir.path(); };
-    
-    void refresh()
-    { return qdir.refresh(); };
-    
-    QString relativeFilePath(const QString & fileName)
-    { return qdir.relativeFilePath(fileName);};
-    
-    bool remove(const QString & fileName)
-    { return qdir.remove(fileName); };
-    
-    bool removeRecursively()
-    { return qdir.removeRecursively(); };
-    
-    bool rename(const QString & oldName, const QString & newName)
-    { return qdir.rename(oldName, newName); };
-    
-    bool rmdir(const QString & dirName)
-    { return qdir.rmdir(dirName); };
-    
-    bool rmpath(const QString & dirPath)
-    { return qdir.rmpath(dirPath); };
-    
-    // void    setFilter(Filters filters)
-    
-    void setNameFilters(const QStringList & nameFilters)
-    { return qdir.setNameFilters(nameFilters);};
-    
-    void setPath(const QString & path)
-    { return qdir.setPath(path);};
-    
-    // void    setSorting(SortFlags sort)
-    
-    // SortFlags   sorting()
-    // { return qdir.sorting(); };
-    
-    void swap(QDir & other)
-    { return qdir.swap(other);};
+    QString absoluteFilePath(const QString & fileName);
+    QString absolutePath();
+    QString canonicalPath();
+    bool cd(const QString & dirName);
+    bool cdUp();
+    uint count();
+    QString dirName();
+    // QFileInfoList entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort);
+    // QFileInfoList entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort);
+    // QStringList entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort);
+    // QStringList entryList(Filters filters = NoFilter, SortFlags sort = NoSort);
+    bool exists(const QString & name);
+    bool exists();
+    QString filePath(const QString & fileName);
+    // Filters filter();
+    bool isAbsolute();
+    bool isReadable();
+    bool isRelative();
+    bool isRoot();
+    bool makeAbsolute();
+    bool mkdir(const QString & dirName);
+    bool mkpath(const QString & dirPath);
+    QStringList nameFilters();
+    QString path();
+    void refresh();
+    QString relativeFilePath(const QString & fileName);
+    bool remove(const QString & fileName);
+    bool removeRecursively();
+    bool rename(const QString & oldName, const QString & newName);
+    bool rmdir(const QString & dirName);
+    bool rmpath(const QString & dirPath);
+    // void setFilter(Filters filters);
+    void setNameFilters(const QStringList & nameFilters);
+    void setPath(const QString & path);
+    // void setSorting(SortFlags sort);
+    // SortFlags sorting();
+    void swap(QDir & other);
 };
 
 
@@ -138,67 +65,27 @@ class DirAttached : public QObject
     Q_OBJECT
     
 public slots:
-    void addSearchPath(const QString & prefix, const QString & path)
-    { return QDir::addSearchPath(prefix, path); };
-    
-    QString cleanPath(const QString & path)
-    { return QDir::cleanPath(path); };
-    
-    Dir* current()
-    { return new Dir(QDir::current()); };
-    
-    QString currentPath()
-    { return QDir::currentPath(); };
-    
-    // QFileInfoList drives()
-    
-    QString fromNativeSeparators(const QString & pathName)
-    { return QDir::fromNativeSeparators(pathName); };
-    
-    Dir* home()
-    { return new Dir(QDir::home()); };
-    
-    QString homePath()
-    { return QDir::homePath(); };
-    
-    bool isAbsolutePath(const QString & path)
-    { return QDir::isAbsolutePath(path); };
-    
-    bool isRelativePath(const QString & path)
-    { return QDir::isRelativePath(path); };
-    
-    bool match(const QString & filter, const QString & fileName)
-    { return QDir::match(filter, fileName); };
-    
-    bool match(const QStringList & filters, const QString & fileName)
-    { return QDir::match(filters, fileName); };
-    
-    Dir* root()
-    { return new Dir(QDir::root()); };
-    
-    QString rootPath()
-    { return QDir::rootPath(); };
-    
-    QStringList searchPaths(const QString & prefix)
-    { return QDir::searchPaths(prefix); };
-    
-    QString separator() // QChar separator() // Convert to QString
-    { return QString(QDir::separator()); };
-    
-    bool  setCurrent(const QString & path)
-    { return QDir::setCurrent(path); };
-    
-    void setSearchPaths(const QString & prefix, const QStringList & searchPaths)
-    { return QDir::setSearchPaths(prefix, searchPaths); };
-    
-    Dir* temp()
-    { return new Dir(QDir::temp()); };
-    
-    QString tempPath()
-    { return QDir::tempPath(); };
-    
-    QString toNativeSeparators(const QString & pathName)
-    { return QDir::toNativeSeparators(pathName); };
+    void addSearchPath(const QString & prefix, const QString & path);
+    QString cleanPath(const QString & path);
+    Dir* current();
+    QString currentPath();
+    // QFileInfoList drives();
+    QString fromNativeSeparators(const QString & pathName);
+    Dir* home();
+    QString homePath();
+    bool isAbsolutePath(const QString & path);
+    bool isRelativePath(const QString & path);
+    bool match(const QString & filter, const QString & fileName);
+    bool match(const QStringList & filters, const QString & fileName);
+    Dir* root();
+    QString rootPath();
+    QStringList searchPaths(const QString & prefix);
+    QString separator();
+    bool  setCurrent(const QString & path);
+    void setSearchPaths(const QString & prefix, const QStringList & searchPaths);
+    Dir* temp();
+    QString tempPath();
+    QString toNativeSeparators(const QString & pathName);
     
 public:
     DirAttached(QObject* attached)

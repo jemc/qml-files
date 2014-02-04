@@ -16,6 +16,7 @@ public:
     FileInfo() { qfileinfo = QFileInfo(""); };
     FileInfo(const QFileInfo& info) { qfileinfo = QFileInfo(info); };
     
+private:
     QFileInfo qfileinfo;
     
 public slots:
@@ -73,8 +74,7 @@ class FileInfoAttached : public QObject
     Q_OBJECT
     
 public slots:
-    bool exists(const QString & file)
-    { return QFileInfo::exists(file); };
+    bool exists(const QString & file);
     
 public:
     FileInfoAttached(QObject* attached)
