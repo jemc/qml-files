@@ -13,9 +13,11 @@ SRCDIR   = $$PWD/src
 BUILDDIR = $$PWD/build
 
 HEADERS += $$SRCDIR/filesplugin.h \
-           $$SRCDIR/dir.h
+           $$SRCDIR/dir.h         \
+           $$SRCDIR/file_info.h
 
-SOURCES += $$SRCDIR/dir.cpp
+SOURCES += $$SRCDIR/dir.cpp       \
+           $$SRCDIR/file_info.cpp
 
 OBJECTS_DIR = $$BUILDDIR/.obj
 MOC_DIR     = $$BUILDDIR/.moc

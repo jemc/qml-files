@@ -3,6 +3,7 @@
 #include <qqml.h>
 
 
+#include "file_info.h"
 #include "dir.h"
 
 
@@ -14,6 +15,8 @@ class TetheredPlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri)
     {
+        qmlRegisterType<FileInfo>(uri, 1, 0, "FileInfo");
+        qmlRegisterType<FileInfoAttached>();
         qmlRegisterType<Dir>(uri, 1, 0, "Dir");
         qmlRegisterType<DirAttached>();
     };
