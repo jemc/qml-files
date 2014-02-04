@@ -19,134 +19,52 @@ public:
     QFileInfo qfileinfo;
     
 public slots:
-    // QDir absoluteDir()
-    
-    QString absoluteFilePath()
-    { return qfileinfo.absoluteFilePath(); };
-    
-    QString absolutePath()
-    { return qfileinfo.absolutePath(); };
-    
-    QString baseName()
-    { return qfileinfo.baseName(); };
-    
-    QString bundleName()
-    { return qfileinfo.bundleName(); };
-    
-    bool caching()
-    { return qfileinfo.caching(); };
-    
-    QString canonicalFilePath()
-    { return qfileinfo.canonicalFilePath(); };
-    
-    QString canonicalPath()
-    { return qfileinfo.canonicalPath(); };
-    
-    QString completeBaseName()
-    { return qfileinfo.completeBaseName(); };
-    
-    QString completeSuffix()
-    { return qfileinfo.completeSuffix(); };
-    
-    // QDateTime created()
-    
-    // QDir dir()
-    
-    bool exists()
-    { return qfileinfo.exists(); };
-    
-    QString fileName()
-    { return qfileinfo.fileName(); };
-    
-    QString filePath()
-    { return qfileinfo.filePath(); };
-    
-    QString group()
-    { return qfileinfo.group(); };
-    
-    uint groupId()
-    { return qfileinfo.groupId(); };
-    
-    bool isAbsolute()
-    { return qfileinfo.isAbsolute(); };
-    
-    bool isBundle()
-    { return qfileinfo.isBundle(); };
-    
-    bool isDir()
-    { return qfileinfo.isDir(); };
-    
-    bool isExecutable()
-    { return qfileinfo.isExecutable(); };
-    
-    bool isFile()
-    { return qfileinfo.isFile(); };
-    
-    bool isHidden()
-    { return qfileinfo.isHidden(); };
-    
-    bool isNativePath()
-    { return qfileinfo.isNativePath(); };
-    
-    bool isReadable()
-    { return qfileinfo.isReadable(); };
-    
-    bool isRelative()
-    { return qfileinfo.isRelative(); };
-    
-    bool isRoot()
-    { return qfileinfo.isRoot(); };
-    
-    bool isSymLink()
-    { return qfileinfo.isSymLink(); };
-    
-    bool isWritable()
-    { return qfileinfo.isWritable(); };
-    
-    // QDateTime lastModified()
-    
-    // QDateTime lastRead()
-    
-    bool makeAbsolute()
-    { return qfileinfo.makeAbsolute(); };
-    
-    QString owner()
-    { return qfileinfo.owner(); };
-    
-    uint ownerId()
-    { return qfileinfo.ownerId(); };
-    
-    QString path()
-    { return qfileinfo.path(); };
-    
-    // bool permission(QFile::Permissions permissions)
-    
-    // QFile::Permissions permissions()
-    
-    void refresh()
-    { return qfileinfo.refresh(); };
-    
-    void setCaching(bool enable)
-    { return qfileinfo.setCaching(enable); };
-    
-    void setFile(const QString & file)
-    { return qfileinfo.setFile(file); };
-    
-    // void setFile(const QFile & file)
-    
-    // void setFile(const QDir & dir, const QString & file)
-    
-    qint64 size()
-    { return qfileinfo.size(); };
-    
-    QString suffix()
-    { return qfileinfo.suffix(); };
-    
-    // void swap(QFileInfo & other)
-    
-    QString symLinkTarget()
-    { return qfileinfo.symLinkTarget(); };
-    
+    // QDir absoluteDir();
+    QString absoluteFilePath();
+    QString absolutePath();
+    QString baseName();
+    QString bundleName();
+    bool caching();
+    QString canonicalFilePath();
+    QString canonicalPath();
+    QString completeBaseName();
+    QString completeSuffix();
+    // QDateTime created();
+    // QDir dir();
+    bool exists();
+    QString fileName();
+    QString filePath();
+    QString group();
+    uint groupId();
+    bool isAbsolute();
+    bool isBundle();
+    bool isDir();
+    bool isExecutable();
+    bool isFile();
+    bool isHidden();
+    bool isNativePath();
+    bool isReadable();
+    bool isRelative();
+    bool isRoot();
+    bool isSymLink();
+    bool isWritable();
+    // QDateTime lastModified();
+    // QDateTime lastRead();
+    bool makeAbsolute();
+    QString owner();
+    uint ownerId();
+    QString path();
+    // bool permission(QFile::Permissions permissions);
+    // QFile::Permissions permissions();
+    void refresh();
+    void setCaching(bool enable);
+    void setFile(const QString & file);
+    // void setFile(const QFile & file);
+    // void setFile(const QDir & dir, const QString & file);
+    qint64 size();
+    QString suffix();
+    // void swap(QFileInfo & other);
+    QString symLinkTarget();
 };
 
 
