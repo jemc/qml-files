@@ -28,6 +28,8 @@ class FileInfoAttached : public QObject
     Q_OBJECT
     
 public slots:
+    bool exists(const QString & file)
+    { return QFileInfo::exists(file); };
     
 public:
     FileInfoAttached(QObject* attached)

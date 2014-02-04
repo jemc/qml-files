@@ -9,6 +9,6 @@ TestCase {
   name: "FileInfo"
   
   function test_it() {
-    console.log(FileInfo)
+    verify(FileInfo.exists(Dir.homePath()))
   }
 }
