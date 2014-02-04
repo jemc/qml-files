@@ -14,6 +14,7 @@ class TetheredPlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri)
     {
-        qmlRegisterSingletonType<Dir>(uri, 1, 0, "Dir", Dir::getSingleton);
+        qmlRegisterType<Dir>(uri, 1, 0, "Dir");
+        qmlRegisterType<DirAttached>();
     };
 };

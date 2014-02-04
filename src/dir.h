@@ -10,7 +10,13 @@ class Dir : public QObject
     Q_OBJECT
     
 public:
-    static QObject* getSingleton(QQmlEngine *engine, QJSEngine *scriptEngine);
+    static QObject* qmlAttachedProperties(QObject* object);
+};
+
+
+class DirAttached : public QObject
+{
+    Q_OBJECT
     
 public slots:
     void addSearchPath(const QString & prefix, const QString & path)
@@ -71,7 +77,15 @@ public slots:
     QString toNativeSeparators(const QString & pathName)
     { return QDir::toNativeSeparators(pathName); };
     
+public:
+    DirAttached(QObject* attached)
+    { m_attached = attached; };
+    
+private:
+    QObject* m_attached = NULL;
 };
 
+
+QML_DECLARE_TYPEINFO(Dir, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif
