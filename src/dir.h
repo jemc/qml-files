@@ -3,6 +3,7 @@
 #define QML_FILES_DIR_H
 
 #include <QtQml>
+#include <QDir>
 
 
 class Dir : public QObject
@@ -11,6 +12,15 @@ class Dir : public QObject
     
 public:
     static QObject* qmlAttachedProperties(QObject* object);
+    
+    Dir() { qdir = QDir(""); };
+    Dir(const QDir& dir) { qdir = QDir(dir); };
+    
+    QDir qdir;
+    
+public slots:
+    QString path()
+    { return qdir.path(); };
 };
 
 
@@ -25,7 +35,8 @@ public slots:
     QString cleanPath(const QString & path)
     { return QDir::cleanPath(path); };
     
-    // QDir current()
+    Dir* current()
+    { return new Dir(QDir::current()); };
     
     QString currentPath()
     { return QDir::currentPath(); };

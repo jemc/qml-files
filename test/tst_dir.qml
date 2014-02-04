@@ -17,5 +17,7 @@ TestCase {
     verify(Dir.separator().length == 1)
     verify(Dir.tempPath().length > 0)
     verify(Dir.fromNativeSeparators("\\test\\path").length > 0)
+    console.log(Dir.currentPath())
+    console.log(Dir.current().path())
   }
 }
