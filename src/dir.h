@@ -1,6 +1,6 @@
 
-#ifndef QML_TETHERED_TETHERED_H
-#define QML_TETHERED_TETHERED_H
+#ifndef QML_FILES_DIR_H
+#define QML_FILES_DIR_H
 
 #include <QtQml>
 
@@ -15,11 +15,13 @@ signals:
     void valueChanged();
     
 public:
+    static QObject* getSingleton(QQmlEngine *engine, QJSEngine *scriptEngine);
     
 public slots:
     
 public:
     uint m_value = 8;
 };
+
 
 #endif

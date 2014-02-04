@@ -15,6 +15,8 @@ BUILDDIR = $$PWD/build
 HEADERS += $$SRCDIR/filesplugin.h \
            $$SRCDIR/dir.h
 
+SOURCES += $$SRCDIR/dir.cpp
+
 OBJECTS_DIR = $$BUILDDIR/.obj
 MOC_DIR     = $$BUILDDIR/.moc
 RCC_DIR     = $$BUILDDIR/.rcc

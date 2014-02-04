@@ -8,9 +8,7 @@ TestCase {
   id: test
   name: "Dir"
   
-  Dir {id:subject}
-  
   function test_it() {
-    verify(subject.value==8)
+    verify(Dir.value==8)
   }
 }
