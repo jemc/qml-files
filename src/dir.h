@@ -10,7 +10,19 @@ class Dir : public QObject
 {
     Q_OBJECT
     
-    Q_PROPERTY(QString path READ path WRITE setPath)
+    Q_PROPERTY(QString     path          READ path           WRITE setPath)
+    Q_PROPERTY(QString     absolutePath  READ absolutePath)
+    Q_PROPERTY(QString     canonicalPath READ canonicalPath)
+    Q_PROPERTY(uint        count         READ count)
+    Q_PROPERTY(QString     dirName       READ dirName)
+    Q_PROPERTY(bool        exists        READ exists)
+    // Q_PROPERTY(Filters     filter        READ filter)
+    Q_PROPERTY(bool        isAbsolute    READ isAbsolute)
+    Q_PROPERTY(bool        isReadable    READ isReadable)
+    Q_PROPERTY(bool        isRelative    READ isRelative)
+    Q_PROPERTY(bool        isRoot        READ isRoot)
+    Q_PROPERTY(QStringList nameFilters   READ nameFilters)
+    // Q_PROPERTY(SortFlags   sorting       READ sorting)
     
 public:
     static QObject* qmlAttachedProperties(QObject* object);
