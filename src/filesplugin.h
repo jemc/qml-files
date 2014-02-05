@@ -5,6 +5,7 @@
 
 #include "file_info.h"
 #include "dir.h"
+#include "file_system_watcher.h"
 
 
 class TetheredPlugin : public QQmlExtensionPlugin
@@ -19,5 +20,6 @@ public:
         qmlRegisterType<FileInfoAttached>();
         qmlRegisterType<Dir>(uri, 1, 0, "Dir");
         qmlRegisterType<DirAttached>();
+        qmlRegisterType<FileSystemWatcher>(uri, 1, 0, "FileSystemWatcher");
     };
 };

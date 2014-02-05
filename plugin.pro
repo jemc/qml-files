@@ -12,12 +12,14 @@ DESTDIR  = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
 SRCDIR   = $$PWD/src
 BUILDDIR = $$PWD/build
 
-HEADERS += $$SRCDIR/filesplugin.h \
-           $$SRCDIR/dir.h         \
-           $$SRCDIR/file_info.h
+HEADERS += $$SRCDIR/filesplugin.h           \
+           $$SRCDIR/dir.h                   \
+           $$SRCDIR/file_info.h             \
+           $$SRCDIR/file_system_watcher.h
 
-SOURCES += $$SRCDIR/dir.cpp       \
-           $$SRCDIR/file_info.cpp
+SOURCES += $$SRCDIR/dir.cpp                 \
+           $$SRCDIR/file_info.cpp           \
+           $$SRCDIR/file_system_watcher.cpp
 
 OBJECTS_DIR = $$BUILDDIR/.obj
 MOC_DIR     = $$BUILDDIR/.moc
