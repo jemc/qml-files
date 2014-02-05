@@ -46,4 +46,9 @@ TestCase {
     data.dir.sorting = Dir.IgnoreCase | Dir.Reversed
     compare(data.dir.sorting, Dir.IgnoreCase | Dir.Reversed)
   }
+  function test_entryList(data) {
+    data.dir.path = Dir.tempPath
+    data.dir.mkdir("testdir")
+    verify(data.dir.entryList.indexOf("testdir") > -1)
+  }
 }

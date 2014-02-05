@@ -33,9 +33,8 @@ QString Dir::dirName() const
 
 // QFileInfoList Dir::entryInfoList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const
 
-// QStringList Dir::entryList(const QStringList & nameFilters, QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const
-
-// QStringList Dir::entryList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const
+QStringList Dir::entryList() const
+{ return qdir.entryList(); };
 
 bool Dir::exists(const QString & name) const
 { return qdir.exists(name); };

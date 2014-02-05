@@ -14,6 +14,7 @@ class Dir : public QObject
     
 public:
     enum Filters {
+        NoFilter = QDir::NoFilter,
         Dirs           = QDir::Dirs,
         AllDirs        = QDir::AllDirs,
         Files          = QDir::Files,
@@ -59,6 +60,7 @@ private:
     Q_PROPERTY(QString     canonicalPath READ canonicalPath)
     Q_PROPERTY(uint        count         READ count)
     Q_PROPERTY(QString     dirName       READ dirName)
+    Q_PROPERTY(QStringList entryList     READ entryList)
     Q_PROPERTY(bool        exists        READ exists)
     Q_PROPERTY(bool        isAbsolute    READ isAbsolute)
     Q_PROPERTY(bool        isReadable    READ isReadable)
@@ -84,8 +86,7 @@ public slots:
     QString dirName() const;
     // QFileInfoList entryInfoList(const QStringList & nameFilters, QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
     // QFileInfoList entryInfoList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
-    // QStringList entryList(const QStringList & nameFilters, QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
-    // QStringList entryList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
+    QStringList entryList() const;
     bool exists(const QString & name) const;
     bool exists() const;
     QString filePath(const QString & fileName) const;
