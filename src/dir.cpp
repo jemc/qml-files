@@ -8,78 +8,78 @@ QObject* Dir::qmlAttachedProperties(QObject* object)
 }
 
 
-QString Dir::absoluteFilePath(const QString & fileName)
-{ return qdir.absoluteFilePath(fileName);};
+QString Dir::absoluteFilePath(const QString & fileName) const
+{ return qdir.absoluteFilePath(fileName); };
 
-QString Dir::absolutePath()
+QString Dir::absolutePath() const
 { return qdir.absolutePath(); };
 
-QString Dir::canonicalPath()
+QString Dir::canonicalPath() const
 { return qdir.canonicalPath(); };
 
 bool Dir::cd(const QString & dirName)
-{ return qdir.cd(dirName);};
+{ return qdir.cd(dirName); };
 
 bool Dir::cdUp()
 { return qdir.cdUp(); };
 
-uint Dir::count()
+uint Dir::count() const
 { return qdir.count(); };
 
-QString Dir::dirName()
+QString Dir::dirName() const
 { return qdir.dirName(); };
 
-// QFileInfoList Dir::entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
+// QFileInfoList Dir::entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort) const
 
-// QFileInfoList Dir::entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort)
+// QFileInfoList Dir::entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort) const
 
-// QStringList Dir::entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort)
+// QStringList Dir::entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort) const
 
-// QStringList Dir::entryList(Filters filters = NoFilter, SortFlags sort = NoSort)
+// QStringList Dir::entryList(Filters filters = NoFilter, SortFlags sort = NoSort) const
 
-bool Dir::exists(const QString & name)
+bool Dir::exists(const QString & name) const
 { return qdir.exists(name); };
 
-bool Dir::exists()
+bool Dir::exists() const
 { return qdir.exists(); };
 
-QString Dir::filePath(const QString & fileName)
-{ return qdir.filePath(fileName);};
+QString Dir::filePath(const QString & fileName) const
+{ return qdir.filePath(fileName); };
 
-// Filters Dir::filter()
+// Filters Dir::filter() const
 
-bool Dir::isAbsolute()
+bool Dir::isAbsolute() const
 { return qdir.isAbsolute(); };
 
-bool Dir::isReadable()
+bool Dir::isReadable() const
 { return qdir.isReadable(); };
 
-bool Dir::isRelative()
+bool Dir::isRelative() const
 { return qdir.isRelative(); };
 
-bool Dir::isRoot()
+bool Dir::isRoot() const
 { return qdir.isRoot(); };
 
 bool Dir::makeAbsolute()
 { return qdir.makeAbsolute(); };
 
-bool Dir::mkdir(const QString & dirName)
+bool Dir::mkdir(const QString & dirName) const
 { return qdir.mkdir(dirName);  };
 
-bool Dir::mkpath(const QString & dirPath)
+bool Dir::mkpath(const QString & dirPath) const
 { return qdir.mkpath(dirPath); };
 
-QStringList Dir::nameFilters()
+QStringList Dir::nameFilters() const
 { return qdir.nameFilters(); };
 
-QString Dir::path()
+QString Dir::path() const
 { return qdir.path(); };
 
-void Dir::refresh()
+void Dir::refresh() const
 { return qdir.refresh(); };
 
-QString Dir::relativeFilePath(const QString & fileName)
-{ return qdir.relativeFilePath(fileName);};
+QString Dir::relativeFilePath(const QString & fileName) const
+{ return qdir.relativeFilePath(fileName); };
 
 bool Dir::remove(const QString & fileName)
 { return qdir.remove(fileName); };
@@ -90,26 +90,26 @@ bool Dir::removeRecursively()
 bool Dir::rename(const QString & oldName, const QString & newName)
 { return qdir.rename(oldName, newName); };
 
-bool Dir::rmdir(const QString & dirName)
+bool Dir::rmdir(const QString & dirName) const
 { return qdir.rmdir(dirName); };
 
-bool Dir::rmpath(const QString & dirPath)
+bool Dir::rmpath(const QString & dirPath) const
 { return qdir.rmpath(dirPath); };
 
 // void Dir::setFilter(Filters filters)
 
 void Dir::setNameFilters(const QStringList & nameFilters)
-{ return qdir.setNameFilters(nameFilters);};
+{ return qdir.setNameFilters(nameFilters); };
 
 void Dir::setPath(const QString & path)
-{ return qdir.setPath(path);};
+{ return qdir.setPath(path); };
 
 // void Dir::setSorting(SortFlags sort)
 
-// SortFlags Dir::sorting()
+// SortFlags Dir::sorting() const
 
 void Dir::swap(QDir & other)
-{ return qdir.swap(other);};
+{ return qdir.swap(other); };
 
 
 
