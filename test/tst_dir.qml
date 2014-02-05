@@ -36,4 +36,14 @@ TestCase {
     data.dir.nameFilters = ["*.cpp","*.h"]
     compare(data.dir.nameFilters, ["*.cpp","*.h"])
   }
+  function test_filter(data) {
+    compare(data.dir.filter, Dir.Drives | Dir.Files | Dir.Dirs)
+    data.dir.filter = Dir.Drives | Dir.Files | Dir.Dirs | Dir.Hidden
+    compare(data.dir.filter, Dir.Drives | Dir.Files | Dir.Dirs | Dir.Hidden)
+  }
+  function test_sorting(data) {
+    compare(data.dir.sorting, Dir.IgnoreCase)
+    data.dir.sorting = Dir.IgnoreCase | Dir.Reversed
+    compare(data.dir.sorting, Dir.IgnoreCase | Dir.Reversed)
+  }
 }

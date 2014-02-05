@@ -54,4 +54,10 @@ TestCase {
     compare(Dir.match("/**/*.cpp", "/tmp/thing.cpp"), true)
     compare(Dir.match("/**/*.cpp", "/tmp/thing.h"), false)
   }
+  function test_filter_enum() {
+    compare(Dir.Drives | Dir.Files | Dir.Dirs, 7)
+  }
+  function test_sortflags_enum() {
+    compare(Dir.IgnoreCase | Dir.Reversed, 24)
+  }
 }

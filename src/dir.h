@@ -5,24 +5,65 @@
 #include <QtQml>
 #include <QDir>
 
+// typedef QDir::Filters Filters;
+
 
 class Dir : public QObject
 {
     Q_OBJECT
     
+public:
+    enum Filters {
+        Dirs           = QDir::Dirs,
+        AllDirs        = QDir::AllDirs,
+        Files          = QDir::Files,
+        Drives         = QDir::Drives,
+        NoSymLinks     = QDir::NoSymLinks,
+        NoDotAndDotDot = QDir::NoDotAndDotDot,
+        NoDot          = QDir::NoDot,
+        NoDotDot       = QDir::NoDotDot,
+        AllEntries     = QDir::AllEntries,
+        Readable       = QDir::Readable,
+        Writable       = QDir::Writable,
+        Executable     = QDir::Executable,
+        Modified       = QDir::Modified,
+        Hidden         = QDir::Hidden,
+        System         = QDir::System,
+        CaseSensitive  = QDir::CaseSensitive
+    };
+    Q_ENUMS(Filters)
+
+    enum SortFlags {
+        Name           = QDir::Name,
+        Time           = QDir::Time,
+        Size           = QDir::Size,
+        Type           = QDir::Type,
+        Unsorted       = QDir::Unsorted,
+        NoSort         = QDir::NoSort,
+        DirsFirst      = QDir::DirsFirst,
+        DirsLast       = QDir::DirsLast,
+        Reversed       = QDir::Reversed,
+        IgnoreCase     = QDir::IgnoreCase,
+        LocaleAware    = QDir::LocaleAware
+    };
+    Q_ENUMS(SortFlags)
+    
+private:
     Q_PROPERTY(QString     path          READ path           WRITE setPath)
+    
     Q_PROPERTY(QStringList nameFilters   READ nameFilters    WRITE setNameFilters)
+    Q_PROPERTY(Filters     filter        READ filter         WRITE setFilter)
+    Q_PROPERTY(SortFlags   sorting       READ sorting        WRITE setSorting)
+    
     Q_PROPERTY(QString     absolutePath  READ absolutePath)
     Q_PROPERTY(QString     canonicalPath READ canonicalPath)
     Q_PROPERTY(uint        count         READ count)
     Q_PROPERTY(QString     dirName       READ dirName)
     Q_PROPERTY(bool        exists        READ exists)
-    // Q_PROPERTY(Filters     filter        READ filter)
     Q_PROPERTY(bool        isAbsolute    READ isAbsolute)
     Q_PROPERTY(bool        isReadable    READ isReadable)
     Q_PROPERTY(bool        isRelative    READ isRelative)
     Q_PROPERTY(bool        isRoot        READ isRoot)
-    // Q_PROPERTY(SortFlags   sorting       READ sorting)
     
 public:
     static QObject* qmlAttachedProperties(QObject* object);
@@ -41,14 +82,14 @@ public slots:
     bool cdUp();
     uint count() const;
     QString dirName() const;
-    // QFileInfoList entryInfoList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort) const;
-    // QFileInfoList entryInfoList(Filters filters = NoFilter, SortFlags sort = NoSort) const;
-    // QStringList entryList(const QStringList & nameFilters, Filters filters = NoFilter, SortFlags sort = NoSort) const;
-    // QStringList entryList(Filters filters = NoFilter, SortFlags sort = NoSort) const;
+    // QFileInfoList entryInfoList(const QStringList & nameFilters, QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
+    // QFileInfoList entryInfoList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
+    // QStringList entryList(const QStringList & nameFilters, QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
+    // QStringList entryList(QDir::Filters filters = NoFilter, SortFlags sort = NoSort) const;
     bool exists(const QString & name) const;
     bool exists() const;
     QString filePath(const QString & fileName) const;
-    // Filters filter() const;
+    Filters filter() const;
     bool isAbsolute() const;
     bool isReadable() const;
     bool isRelative() const;
@@ -65,11 +106,11 @@ public slots:
     bool rename(const QString & oldName, const QString & newName);
     bool rmdir(const QString & dirName) const;
     bool rmpath(const QString & dirPath) const;
-    // void setFilter(Filters filters);
+    void setFilter(Filters filters);
     void setNameFilters(const QStringList & nameFilters);
     void setPath(const QString & path);
-    // void setSorting(SortFlags sort);
-    // SortFlags sorting() const;
+    void setSorting(SortFlags sort);
+    SortFlags sorting() const;
     void swap(QDir & other);
 };
 
