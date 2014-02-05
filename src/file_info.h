@@ -30,7 +30,7 @@ public slots:
     QString canonicalPath();
     QString completeBaseName();
     QString completeSuffix();
-    // QDateTime created();
+    QDateTime created();
     // QDir dir();
     bool exists();
     QString fileName();
@@ -49,8 +49,8 @@ public slots:
     bool isRoot();
     bool isSymLink();
     bool isWritable();
-    // QDateTime lastModified();
-    // QDateTime lastRead();
+    QDateTime lastModified();
+    QDateTime lastRead();
     bool makeAbsolute();
     QString owner();
     uint ownerId();

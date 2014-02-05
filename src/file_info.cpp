@@ -37,7 +37,8 @@ QString FileInfo::completeBaseName()
 QString FileInfo::completeSuffix()
 { return qfileinfo.completeSuffix(); };
 
-// QDateTime FileInfo::created()
+QDateTime FileInfo::created()
+{ return qfileinfo.created(); }
 
 // QDir FileInfo::dir()
 
@@ -92,9 +93,11 @@ bool FileInfo::isSymLink()
 bool FileInfo::isWritable()
 { return qfileinfo.isWritable(); };
 
-// QDateTime FileInfo::lastModified()
+QDateTime FileInfo::lastModified()
+{ return qfileinfo.lastModified(); }
 
-// QDateTime FileInfo::lastRead()
+QDateTime FileInfo::lastRead()
+{ return qfileinfo.lastRead(); }
 
 bool FileInfo::makeAbsolute()
 { return qfileinfo.makeAbsolute(); };
