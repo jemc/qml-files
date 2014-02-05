@@ -6,9 +6,7 @@ import org.jemc.qml.Files 1.0
 
 TestCase {
   id: test
-  name: "Dir"
-  
-  Dir { path:"/test/path" }
+  name: "DirAttached"
   
   
   function test_separator() {

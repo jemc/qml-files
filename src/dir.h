@@ -11,6 +11,7 @@ class Dir : public QObject
     Q_OBJECT
     
     Q_PROPERTY(QString     path          READ path           WRITE setPath)
+    Q_PROPERTY(QStringList nameFilters   READ nameFilters    WRITE setNameFilters)
     Q_PROPERTY(QString     absolutePath  READ absolutePath)
     Q_PROPERTY(QString     canonicalPath READ canonicalPath)
     Q_PROPERTY(uint        count         READ count)
@@ -21,7 +22,6 @@ class Dir : public QObject
     Q_PROPERTY(bool        isReadable    READ isReadable)
     Q_PROPERTY(bool        isRelative    READ isRelative)
     Q_PROPERTY(bool        isRoot        READ isRoot)
-    Q_PROPERTY(QStringList nameFilters   READ nameFilters)
     // Q_PROPERTY(SortFlags   sorting       READ sorting)
     
 public:
