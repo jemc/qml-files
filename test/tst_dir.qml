@@ -8,6 +8,9 @@ TestCase {
   id: test
   name: "Dir"
   
+  Dir { path:"/test/path" }
+  
+  
   function test_separator() {
     compare(Dir.separator(), "/")
   }
@@ -21,10 +24,10 @@ TestCase {
     verify(Dir.homePath().length > 0)
     verify(Dir.rootPath().length > 0)
     verify(Dir.tempPath().length > 0)
-    compare(Dir.currentPath(),Dir.current().path())
-    compare(Dir.homePath(),Dir.home().path())
-    compare(Dir.rootPath(),Dir.root().path())
-    compare(Dir.tempPath(),Dir.temp().path())
+    compare(Dir.currentPath(),Dir.current().path)
+    compare(Dir.homePath(),Dir.home().path)
+    compare(Dir.rootPath(),Dir.root().path)
+    compare(Dir.tempPath(),Dir.temp().path)
   }
   function test_setCurrentPath() {
     verify(Dir.currentPath() != Dir.tempPath())

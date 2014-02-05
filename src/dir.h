@@ -10,6 +10,8 @@ class Dir : public QObject
 {
     Q_OBJECT
     
+    Q_PROPERTY(QString path READ path WRITE setPath)
+    
 public:
     static QObject* qmlAttachedProperties(QObject* object);
     
