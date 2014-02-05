@@ -10,7 +10,7 @@ TestCase {
   
   
   function test_separator() {
-    compare(Dir.separator(), "/")
+    compare(Dir.separator, "/")
   }
   function test_clean_and_native() {
     compare(Dir.cleanPath("/some//strange\ path"), "/some/strange path")
@@ -18,19 +18,19 @@ TestCase {
     compare(Dir.toNativeSeparators("/test/path"), "/test/path")
   }
   function test_globalPaths() {
-    verify(Dir.currentPath().length > 0)
-    verify(Dir.homePath().length > 0)
-    verify(Dir.rootPath().length > 0)
-    verify(Dir.tempPath().length > 0)
-    compare(Dir.currentPath(),Dir.current().path)
-    compare(Dir.homePath(),Dir.home().path)
-    compare(Dir.rootPath(),Dir.root().path)
-    compare(Dir.tempPath(),Dir.temp().path)
+    verify(Dir.currentPath.length > 0)
+    verify(Dir.homePath.length > 0)
+    verify(Dir.rootPath.length > 0)
+    verify(Dir.tempPath.length > 0)
+    compare(Dir.currentPath,Dir.current.path)
+    compare(Dir.homePath,Dir.home.path)
+    compare(Dir.rootPath,Dir.root.path)
+    compare(Dir.tempPath,Dir.temp.path)
   }
   function test_setCurrentPath() {
-    verify(Dir.currentPath() != Dir.tempPath())
-    Dir.setCurrent(Dir.tempPath())
-    verify(Dir.currentPath() == Dir.tempPath())
+    verify(Dir.currentPath != Dir.tempPath)
+    Dir.setCurrent(Dir.tempPath)
+    verify(Dir.currentPath == Dir.tempPath)
   }
   function test_searchPaths() {
     compare(Dir.searchPaths("stuff"), [])

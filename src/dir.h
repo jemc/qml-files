@@ -78,6 +78,17 @@ class DirAttached : public QObject
 {
     Q_OBJECT
     
+    Q_PROPERTY(Dir*          current     READ current)
+    Q_PROPERTY(QString       currentPath READ currentPath)
+    // Q_PROPERTY(QFileInfoList drives      READ drives)
+    Q_PROPERTY(Dir*          home        READ home)
+    Q_PROPERTY(QString       homePath    READ homePath)
+    Q_PROPERTY(Dir*          root        READ root)
+    Q_PROPERTY(QString       rootPath    READ rootPath)
+    Q_PROPERTY(QString       separator   READ separator)
+    Q_PROPERTY(Dir*          temp        READ temp)
+    Q_PROPERTY(QString       tempPath    READ tempPath)
+    
 public slots:
     void addSearchPath(const QString & prefix, const QString & path);
     QString cleanPath(const QString & path);

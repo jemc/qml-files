@@ -19,7 +19,7 @@ TestCase {
   }
   
   function test_readonly_properties(data) {
-    data.dir.path = Dir.tempPath()
+    data.dir.path = Dir.tempPath
     compare(data.dir.path,          "/tmp")
     compare(data.dir.absolutePath,  "/tmp")
     compare(data.dir.canonicalPath, "/tmp")
