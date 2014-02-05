@@ -1,6 +1,8 @@
 
 #include "file_info.h"
 
+#include "dir.h"
+
 
 QObject* FileInfo::qmlAttachedProperties(QObject* object)
 {
@@ -8,7 +10,8 @@ QObject* FileInfo::qmlAttachedProperties(QObject* object)
 }
 
 
-// QDir FileInfo::absoluteDir()
+Dir* FileInfo::absoluteDir()
+{ return new Dir(qfileinfo.absoluteDir()); };
 
 QString FileInfo::absoluteFilePath()
 { return qfileinfo.absoluteFilePath(); };
@@ -40,7 +43,8 @@ QString FileInfo::completeSuffix()
 QDateTime FileInfo::created()
 { return qfileinfo.created(); }
 
-// QDir FileInfo::dir()
+Dir* FileInfo::dir()
+{ return new Dir(qfileinfo.dir()); };
 
 bool FileInfo::exists()
 { return qfileinfo.exists(); };

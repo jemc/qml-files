@@ -5,6 +5,8 @@
 #include <QtQml>
 #include <QFileInfo>
 
+#include "dir.h"
+
 
 class FileInfo : public QObject
 {
@@ -20,7 +22,7 @@ private:
     QFileInfo qfileinfo;
     
 public slots:
-    // QDir absoluteDir();
+    Dir* absoluteDir();
     QString absoluteFilePath();
     QString absolutePath();
     QString baseName();
@@ -31,7 +33,7 @@ public slots:
     QString completeBaseName();
     QString completeSuffix();
     QDateTime created();
-    // QDir dir();
+    Dir* dir();
     bool exists();
     QString fileName();
     QString filePath();
