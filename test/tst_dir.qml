@@ -9,23 +9,42 @@ TestCase {
   name: "Dir"
   
   function test_it() {
-    verify(Dir.cleanPath("/test/path").length > 0)
-    verify(Dir.fromNativeSeparators("/test/path").length > 0)
-    verify(Dir.separator().length == 1)
-    verify(Dir.fromNativeSeparators("\\test\\path").length > 0)
+    compare(Dir.separator(), "/")
     
     verify(Dir.currentPath().length > 0)
     verify(Dir.homePath().length > 0)
     verify(Dir.rootPath().length > 0)
     verify(Dir.tempPath().length > 0)
-    
     compare(Dir.currentPath(),Dir.current().path())
     compare(Dir.homePath(),Dir.home().path())
     compare(Dir.rootPath(),Dir.root().path())
     compare(Dir.tempPath(),Dir.temp().path())
     
+    verify(Dir.currentPath() != Dir.tempPath())
+    Dir.setCurrent(Dir.tempPath())
+    verify(Dir.currentPath() == Dir.tempPath())
+    
+    compare(Dir.searchPaths("stuff"), [])
     Dir.addSearchPath("stuff", "/test/path")
     Dir.addSearchPath("stuff", "/test/other/path")
-    compare(Dir.searchPaths("stuff"),["/test/path","/test/other/path"])
+    compare(Dir.searchPaths("stuff"), ["/test/path","/test/other/path"])
+    Dir.setSearchPaths("stuff", ["/other/path","/other/other/path"])
+    compare(Dir.searchPaths("stuff"), ["/other/path","/other/other/path"])
+    Dir.setSearchPaths("stuff", [])
+    compare(Dir.searchPaths("stuff"), [])
+    
+    compare(Dir.cleanPath("/some//strange\ path"), "/some/strange path")
+    compare(Dir.fromNativeSeparators("/test/path"), "/test/path")
+    compare(Dir.toNativeSeparators("/test/path"), "/test/path")
+    
+    compare(Dir.isAbsolutePath("/test/path"), true)
+    compare(Dir.isAbsolutePath("test/path"), false)
+    compare(Dir.isAbsolutePath("./test/path"), false)
+    compare(Dir.isAbsolutePath("../test/path"), false)
+    
+    compare(Dir.match("/tmp/*.cpp", "/tmp/thing.cpp"), true)
+    compare(Dir.match("/tmp/*.cpp", "/tmp/thing.h"), false)
+    compare(Dir.match("/**/*.cpp", "/tmp/thing.cpp"), true)
+    compare(Dir.match("/**/*.cpp", "/tmp/thing.h"), false)
   }
 }
