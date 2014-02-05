@@ -3,7 +3,7 @@
     <copyright>Copyright 2013 Joe McIlvain</copyright>
     <license>MIT License</license>
     <category>Qt Quick</category>
-    <description>Tethered properties across a network.</description>
+    <description>Wrapper for Qt file access in QML.</description>
     <url>https://github.com/jemc/qml-files</url>
     <dependencyList></dependencyList>
     <argumentList></argumentList>
