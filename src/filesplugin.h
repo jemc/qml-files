@@ -5,6 +5,7 @@
 
 #include "file_info.h"
 #include "dir.h"
+#include "file.h"
 #include "file_system_watcher.h"
 
 
@@ -21,5 +22,7 @@ public:
         qmlRegisterType<Dir>(uri, 1, 0, "Dir");
         qmlRegisterType<DirAttached>();
         qmlRegisterType<FileSystemWatcher>(uri, 1, 0, "FileSystemWatcher");
+        
+        qmlRegisterType<wQFile>(uri, 1, 0, "File");
     };
 };
