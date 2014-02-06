@@ -12,5 +12,8 @@ TestCase {
   
   function test_it() {
     compare(file.fileName, "/usr/bin/grep")
+    verify(file.exists)
+    verify(file.size > 1)
+    compare(file.symLinkTarget,"")
   }
 }
