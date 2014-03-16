@@ -2,15 +2,26 @@
 #ifndef QML_FILES_FILE_H
 #define QML_FILES_FILE_H
 
-#include <qqml.h>
-#include <QtCore/qobject.h>
+#include <QtQml>
+#include <QFile>
 
 
-class wQFilePrivate;
+#define WQ_INIT_PRIV(Class) wq_priv_ptr = new Class;
+
+#define WQ_PRIV(Class) Class * const o = wq_get_priv();
+
+#define WQ_DECL_PRIV(Class) \
+    Class* wq_priv_ptr; \
+    inline       Class* wq_get_priv()       { return reinterpret_cast<      Class *>(wq_priv_ptr); } \
+    inline const Class* wq_get_priv() const { return reinterpret_cast<const Class *>(wq_priv_ptr); } \
+    friend class Class;
+
+
+
 class wQFile : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(wQFile)
+    WQ_DECL_PRIV(QFile)
     Q_INTERFACES(QQmlParserStatus)
     
     Q_PROPERTY(QString fileName READ fileName WRITE setFileName)

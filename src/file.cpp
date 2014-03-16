@@ -1,17 +1,8 @@
 
-#include <QFile>
-#include <QtCore/5.2.1/QtCore/private/qobject_p.h>
-
 #include "file.h"
 
 
-class wQFilePrivate : public QObjectPrivate, public QFile
-{
-    Q_DECLARE_PUBLIC(wQFile)
-};
-
-
-wQFile::wQFile(QObject *parent) : QObject(*(new wQFilePrivate), parent) { }
+wQFile::wQFile(QObject *parent) { Q_UNUSED(parent); WQ_INIT_PRIV(QFile); }
 
 void wQFile::classBegin() { }
 
@@ -21,7 +12,7 @@ void wQFile::componentComplete() { }
 // bool    wQFile::copy(const QString & newName)
 
 bool    wQFile::exists() const
-{ Q_D(const wQFile); return d->exists(); };
+{ WQ_PRIV(const QFile); return o->exists(); };
 
 // bool    wQFile::link(const QString & linkName)
 
@@ -34,14 +25,14 @@ bool    wQFile::exists() const
 // bool    wQFile::rename(const QString & newName)
 
 void    wQFile::setFileName(const QString & name)
-{ Q_D(wQFile); return d->setFileName(name); };
+{ WQ_PRIV(QFile); return o->setFileName(name); };
 
 QString wQFile::symLinkTarget() const
-{ Q_D(const wQFile); return d->symLinkTarget(); };
+{ WQ_PRIV(const QFile); return o->symLinkTarget(); };
 
 
 QString wQFile::fileName() const
-{ Q_D(const wQFile); return d->fileName(); };
+{ WQ_PRIV(const QFile); return o->fileName(); };
 
 // bool    wQFile::open(OpenMode mode)
 
@@ -52,7 +43,7 @@ QString wQFile::fileName() const
 // bool    wQFile::setPermissions(Permissions permissions)
 
 qint64  wQFile::size() const
-{ Q_D(const wQFile); return d->size(); };
+{ WQ_PRIV(const QFile); return o->size(); };
 
 
 // FileError   wQFile::error() const
