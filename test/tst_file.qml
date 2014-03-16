@@ -81,4 +81,24 @@ TestCase {
     compare(file.readLine(), "rest%0A")
     file.close()
   }
+  
+  function test_pos_seek_resize() {
+    verify(file.open(File.ReadWrite|File.Truncate))
+    compare(file.write("foo_bar_baz"), 11)
+    compare(file.pos, 11)
+    compare(file.size, 11)
+    verify(file.reset())
+    compare(file.pos, 0)
+    compare(file.size, 11)
+    compare(file.read(4), "foo_")
+    compare(file.pos, 4)
+    verify(file.seek(8))
+    compare(file.readAll(), "baz")
+    verify(file.resize(3))
+    compare(file.size, 3)
+    verify(file.reset())
+    compare(file.size, 3)
+    compare(file.readAll(), "foo")
+    file.close()
+  }
 }

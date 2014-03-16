@@ -47,7 +47,8 @@ bool    wQFile::open(OpenMode mode)
 
 // Permissions wQFile::permissions() const
 
-// bool    wQFile::resize(qint64 sz)
+bool    wQFile::resize(qint64 sz)
+{ WQ_PRIV(QFile); return o->resize(sz); };
 
 // bool    wQFile::setPermissions(Permissions permissions)
 
@@ -83,9 +84,11 @@ void    wQFile::close()
 
 // bool    wQFile::isSequential() const
 
-// qint64  wQFile::pos() const
+qint64  wQFile::pos() const
+{ WQ_PRIV(const QFile); return o->pos(); };
 
-// bool    wQFile::seek(qint64 pos)
+bool    wQFile::seek(qint64 pos)
+{ WQ_PRIV(QFile); return o->seek(pos); };
 
 
 ///
@@ -138,8 +141,6 @@ QString  wQFile::readLine(qint64 maxSize)
 
 bool    wQFile::reset()
 { WQ_PRIV(QFile); return o->reset(); };
-
-// bool    wQFile::seek(qint64 pos)
 
 // void    wQFile::setTextModeEnabled(bool enabled)
 

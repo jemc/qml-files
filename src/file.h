@@ -19,6 +19,7 @@ class wQFile : public QObject, public QQmlParserStatus
     Q_PROPERTY(bool    exists        READ exists)
     Q_PROPERTY(QString symLinkTarget READ symLinkTarget)
     Q_PROPERTY(qint64  size          READ size)
+    Q_PROPERTY(qint64  pos           READ pos)
     
 public:
     wQFile(QObject *parent=0);
@@ -54,7 +55,7 @@ public slots:
     QString fileName() const;
     bool    open(OpenMode mode);
     // Permissions permissions() const;
-    // bool    resize(qint64 sz);
+    bool    resize(qint64 sz);
     // bool    setPermissions(Permissions permissions);
     qint64  size() const;
     
@@ -68,8 +69,8 @@ public slots:
     // bool    atEnd() const
     void    close();
     // bool    isSequential() const
-    // qint64  pos() const
-    // bool    seek(qint64 pos)
+    qint64  pos() const;
+    bool    seek(qint64 pos);
 
     // qint64  bytesAvailable() const
     // qint64  bytesToWrite() const
@@ -87,7 +88,6 @@ public slots:
     QString  readAll();
     QString  readLine(qint64 maxSize = 0);
     bool    reset();
-    // bool    seek(qint64 pos)
     // void    setTextModeEnabled(bool enabled)
     // void    ungetChar(char c)
     // bool    waitForBytesWritten(int msecs)
