@@ -81,23 +81,19 @@ public slots:
     // bool    isTextModeEnabled() const
     // bool    isWritable() const
     // OpenMode    openMode() const
-    // qint64  peek(char * data, qint64 maxSize)
-    // QByteArray  peek(qint64 maxSize)
+    QString  peek(qint64 maxSize);
     // bool    putChar(char c)
-    // qint64  read(char * data, qint64 maxSize)
-    // QByteArray  read(qint64 maxSize)
+    QString  read(qint64 maxSize);
     // QByteArray  readAll()
     // qint64  readLine(char * data, qint64 maxSize)
     // QByteArray  readLine(qint64 maxSize = 0)
-    // bool    reset()
+    bool    reset();
     // bool    seek(qint64 pos)
     // void    setTextModeEnabled(bool enabled)
     // void    ungetChar(char c)
     // bool    waitForBytesWritten(int msecs)
     // bool    waitForReadyRead(int msecs)
-    // qint64  write(const char * data, qint64 maxSize)
-    // qint64  write(const char * data)
-    // qint64  write(const QByteArray & byteArray)
+    qint64  write(const QString & string);
     
 signals:
     // void    aboutToClose()

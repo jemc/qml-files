@@ -115,13 +115,20 @@ bool    wQFile::isOpen() const
 
 // qint64  wQFile::peek(char * data, qint64 maxSize)
 
-// QByteArray  wQFile::peek(qint64 maxSize)
+#define LATIN1_CHARS \
+" !\"#$&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+
+QString  wQFile::peek(qint64 maxSize)
+{ WQ_PRIV(QFile);
+  return QString::fromLatin1(o->peek(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
 // bool    wQFile::putChar(char c)
 
 // qint64  wQFile::read(char * data, qint64 maxSize)
 
-// QByteArray  wQFile::read(qint64 maxSize)
+QString  wQFile::read(qint64 maxSize)
+{ WQ_PRIV(QFile);
+  return QString::fromLatin1(o->read(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
 // QByteArray  wQFile::readAll()
 
@@ -129,7 +136,8 @@ bool    wQFile::isOpen() const
 
 // QByteArray  wQFile::readLine(qint64 maxSize = 0)
 
-// bool    wQFile::reset()
+bool    wQFile::reset()
+{ WQ_PRIV(QFile); return o->reset(); };
 
 // bool    wQFile::seek(qint64 pos)
 
@@ -141,8 +149,6 @@ bool    wQFile::isOpen() const
 
 // bool    wQFile::waitForReadyRead(int msecs)
 
-// qint64  wQFile::write(const char * data, qint64 maxSize)
-
-// qint64  wQFile::write(const char * data)
-
-// qint64  wQFile::write(const QByteArray & byteArray)
+qint64  wQFile::write(const QString & string)
+{ WQ_PRIV(QFile);
+  return o->write(QByteArray::fromPercentEncoding(string.toLatin1())); };
