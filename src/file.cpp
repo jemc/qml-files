@@ -1,6 +1,6 @@
 
 #include <QFile>
-#include <QtCore/5.2.0/QtCore/private/qobject_p.h>
+#include <QtCore/5.2.1/QtCore/private/qobject_p.h>
 
 #include "file.h"
 

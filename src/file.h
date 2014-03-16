@@ -4,7 +4,7 @@
 
 #include <qqml.h>
 #include <QtCore/qobject.h>
-#include <QtQml/5.2.0/QtQml/private/qtqmlglobal_p.h>
+#include <QtQml/5.2.1/QtQml/private/qtqmlglobal_p.h>
 
 
 class wQFilePrivate;
