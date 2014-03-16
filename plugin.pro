@@ -13,6 +13,7 @@ SRCDIR   = $$PWD/src
 BUILDDIR = $$PWD/build
 
 HEADERS += $$SRCDIR/filesplugin.h           \
+           $$SRCDIR/wq_priv.h               \
            $$SRCDIR/dir.h                   \
            $$SRCDIR/file_info.h             \
            $$SRCDIR/file_system_watcher.h   \
