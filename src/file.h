@@ -84,7 +84,7 @@ public slots:
     QString  peek(qint64 maxSize);
     // bool    putChar(char c)
     QString  read(qint64 maxSize);
-    // QByteArray  readAll()
+    QString  readAll();
     // qint64  readLine(char * data, qint64 maxSize)
     // QByteArray  readLine(qint64 maxSize = 0)
     bool    reset();

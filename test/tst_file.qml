@@ -27,7 +27,7 @@ TestCase {
   }
   
   function test_write_read_peek() {
-    verify(file.open(File.ReadWrite))
+    verify(file.open(File.ReadWrite|File.Truncate))
     
     var test_strings = [
       ['test',    4], // Normal latin1 encoded string
@@ -51,6 +51,19 @@ TestCase {
       verify(file.reset(),                     "for string: \"%1\"".arg(string))
     }
     
+    file.close()
+  }
+  
+  function test_readAll_truncate() {
+    verify(file.open(File.ReadWrite|File.Truncate))
+    compare(file.readAll(), "")
+    compare(file.write("test"), 4)
+    verify(file.reset())
+    compare(file.readAll(), "test")
+    file.close()
+    
+    verify(file.open(File.ReadWrite|File.Truncate))
+    compare(file.readAll(), "")
     file.close()
   }
 }

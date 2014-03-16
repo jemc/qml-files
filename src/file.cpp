@@ -130,7 +130,9 @@ QString  wQFile::read(qint64 maxSize)
 { WQ_PRIV(QFile);
   return QString::fromLatin1(o->read(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
-// QByteArray  wQFile::readAll()
+QString  wQFile::readAll()
+{ WQ_PRIV(QFile);
+  return QString::fromLatin1(o->readAll().toPercentEncoding(LATIN1_CHARS)); };
 
 // qint64  wQFile::readLine(char * data, qint64 maxSize)
 
