@@ -82,7 +82,7 @@ TestCase {
     file.close()
   }
   
-  function test_pos_seek_resize() {
+  function test_pos_bytesAvailable_size_seek_resize() {
     verify(file.open(File.ReadWrite|File.Truncate))
     compare(file.write("foo_bar_baz"), 11)
     
