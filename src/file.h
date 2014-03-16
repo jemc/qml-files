@@ -4,11 +4,10 @@
 
 #include <qqml.h>
 #include <QtCore/qobject.h>
-#include <QtQml/5.2.1/QtQml/private/qtqmlglobal_p.h>
 
 
 class wQFilePrivate;
-class Q_QML_PRIVATE_EXPORT wQFile : public QObject, public QQmlParserStatus
+class wQFile : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_DECLARE_PRIVATE(wQFile)
