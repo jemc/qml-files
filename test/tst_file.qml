@@ -19,11 +19,11 @@ TestCase {
   }
   
   function test_open_close() {
-    verify(!file.isOpen())
+    verify(!file.isOpen)
     verify(file.open(File.ReadWrite))
-    verify(file.isOpen())
+    verify(file.isOpen)
     file.close()
-    verify(!file.isOpen())
+    verify(!file.isOpen)
   }
   
   function test_write_read_peek() {
@@ -85,19 +85,37 @@ TestCase {
   function test_pos_seek_resize() {
     verify(file.open(File.ReadWrite|File.Truncate))
     compare(file.write("foo_bar_baz"), 11)
-    compare(file.pos, 11)
-    compare(file.size, 11)
+    
+    compare(file.pos,            11)
+    compare(file.bytesAvailable, 0)
+    compare(file.size,           11)
+    
     verify(file.reset())
-    compare(file.pos, 0)
-    compare(file.size, 11)
+    
+    compare(file.pos,            0)
+    compare(file.bytesAvailable, 11)
+    compare(file.size,           11)
+    
     compare(file.read(4), "foo_")
-    compare(file.pos, 4)
+    
+    compare(file.pos,            4)
+    compare(file.bytesAvailable, 7)
+    compare(file.size,           11)
+    
     verify(file.seek(8))
+    
+    compare(file.pos,            8)
+    compare(file.bytesAvailable, 3)
+    compare(file.size,           11)
+    
     compare(file.readAll(), "baz")
     verify(file.resize(3))
-    compare(file.size, 3)
     verify(file.reset())
-    compare(file.size, 3)
+    
+    compare(file.pos,            0)
+    compare(file.bytesAvailable, 3)
+    compare(file.size,           3)
+    
     compare(file.readAll(), "foo")
     file.close()
   }

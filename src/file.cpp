@@ -97,7 +97,8 @@ bool    wQFile::seek(qint64 pos)
 // public functions inherited from QIODevice
 
 
-// qint64  wQFile::bytesAvailable() const
+qint64  wQFile::bytesAvailable() const
+{ WQ_PRIV(const QFile); return o->bytesAvailable(); };
 
 // qint64  wQFile::bytesToWrite() const
 

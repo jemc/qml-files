@@ -15,12 +15,14 @@ class wQFile : public QObject, public QQmlParserStatus
     Q_INTERFACES(QQmlParserStatus)
     
     Q_PROPERTY(QString     fileName    READ fileName    WRITE setFileName)
-    Q_PROPERTY(Permissions permissions READ permissions)
     
-    Q_PROPERTY(bool    exists        READ exists)
-    Q_PROPERTY(QString symLinkTarget READ symLinkTarget)
-    Q_PROPERTY(qint64  size          READ size)
-    Q_PROPERTY(qint64  pos           READ pos)
+    Q_PROPERTY(bool        exists         READ exists)
+    Q_PROPERTY(QString     symLinkTarget  READ symLinkTarget)
+    Q_PROPERTY(Permissions permissions    READ permissions)
+    Q_PROPERTY(qint64      size           READ size)
+    Q_PROPERTY(qint64      pos            READ pos)
+    Q_PROPERTY(qint64      bytesAvailable READ bytesAvailable)
+    Q_PROPERTY(bool        isOpen         READ isOpen)
     
 public:
     wQFile(QObject *parent=0);
@@ -62,8 +64,6 @@ public slots:
     // bool    copy(const QString & newName);
     bool    exists() const;
     // bool    link(const QString & linkName);
-    // bool    open(FILE * fh, OpenMode mode, FileHandleFlags handleFlags = DontCloseHandle);
-    // bool    open(int fd, OpenMode mode, FileHandleFlags handleFlags = DontCloseHandle);
     // bool    remove();
     // bool    rename(const QString & newName);
     void    setFileName(const QString & name);
@@ -89,7 +89,7 @@ public slots:
     qint64  pos() const;
     bool    seek(qint64 pos);
 
-    // qint64  bytesAvailable() const
+    qint64  bytesAvailable() const;
     // qint64  bytesToWrite() const
     // bool    canReadLine() const
     // QString errorString() const
