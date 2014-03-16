@@ -14,7 +14,7 @@ class Dir : public QObject
     
 public:
     enum Filters {
-        NoFilter = QDir::NoFilter,
+        NoFilter       = QDir::NoFilter,
         Dirs           = QDir::Dirs,
         AllDirs        = QDir::AllDirs,
         Files          = QDir::Files,
@@ -33,7 +33,7 @@ public:
         CaseSensitive  = QDir::CaseSensitive
     };
     Q_ENUMS(Filters)
-
+    
     enum SortFlags {
         Name           = QDir::Name,
         Time           = QDir::Time,

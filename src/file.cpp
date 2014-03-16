@@ -9,6 +9,10 @@ void wQFile::classBegin() { }
 void wQFile::componentComplete() { }
 
 
+///
+// Public Functions
+
+
 // bool    wQFile::copy(const QString & newName)
 
 bool    wQFile::exists() const
@@ -31,10 +35,15 @@ QString wQFile::symLinkTarget() const
 { WQ_PRIV(const QFile); return o->symLinkTarget(); };
 
 
+///
+// Reimplemented Public Functions
+
+
 QString wQFile::fileName() const
 { WQ_PRIV(const QFile); return o->fileName(); };
 
-// bool    wQFile::open(OpenMode mode)
+bool    wQFile::open(OpenMode mode)
+{ WQ_PRIV(QFile); return o->open((QIODevice::OpenMode)mode); };
 
 // Permissions wQFile::permissions() const
 
@@ -44,6 +53,10 @@ QString wQFile::fileName() const
 
 qint64  wQFile::size() const
 { WQ_PRIV(const QFile); return o->size(); };
+
+
+///
+// public functions inherited from QFileDevice
 
 
 // FileError   wQFile::error() const
@@ -59,10 +72,14 @@ qint64  wQFile::size() const
 // void    wQFile::unsetError()
 
 
+///
+// reimplemented public functions inherited from QFileDevice
+
 
 // bool    wQFile::atEnd() const
 
-// void    wQFile::close()
+void    wQFile::close()
+{ WQ_PRIV(QFile); return o->close(); };
 
 // bool    wQFile::isSequential() const
 
@@ -70,6 +87,9 @@ qint64  wQFile::size() const
 
 // bool    wQFile::seek(qint64 pos)
 
+
+///
+// public functions inherited from QIODevice
 
 
 // qint64  wQFile::bytesAvailable() const
@@ -82,7 +102,8 @@ qint64  wQFile::size() const
 
 // bool    wQFile::getChar(char * c)
 
-// bool    wQFile::isOpen() const
+bool    wQFile::isOpen() const
+{ WQ_PRIV(const QFile); return o->isOpen(); };
 
 // bool    wQFile::isReadable() const
 

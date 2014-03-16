@@ -16,4 +16,12 @@ TestCase {
     verify(file.size > 1)
     compare(file.symLinkTarget,"")
   }
+  
+  function test_open() {
+    verify(!file.isOpen())
+    verify(file.open(File.ReadOnly))
+    verify(file.isOpen())
+    file.close()
+    verify(!file.isOpen())
+  }
 }

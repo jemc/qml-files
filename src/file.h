@@ -23,6 +23,19 @@ class wQFile : public QObject, public QQmlParserStatus
 public:
     wQFile(QObject *parent=0);
     
+    enum OpenMode {
+        NotOpen    = QIODevice::NotOpen,
+        ReadOnly   = QIODevice::ReadOnly,
+        WriteOnly  = QIODevice::WriteOnly,
+        ReadWrite  = QIODevice::ReadWrite,
+        Append     = QIODevice::Append,
+        Truncate   = QIODevice::Truncate,
+        Text       = QIODevice::Text,
+        Unbuffered = QIODevice::Unbuffered,
+    };
+    Q_ENUMS(OpenMode)
+    
+    
 protected:
     void classBegin();
     void componentComplete();
@@ -39,7 +52,7 @@ public slots:
     QString symLinkTarget() const;
     
     QString fileName() const;
-    // bool    open(OpenMode mode);
+    bool    open(OpenMode mode);
     // Permissions permissions() const;
     // bool    resize(qint64 sz);
     // bool    setPermissions(Permissions permissions);
@@ -53,7 +66,7 @@ public slots:
     // void    unsetError()
     
     // bool    atEnd() const
-    // void    close()
+    void    close();
     // bool    isSequential() const
     // qint64  pos() const
     // bool    seek(qint64 pos)
@@ -63,7 +76,7 @@ public slots:
     // bool    canReadLine() const
     // QString errorString() const
     // bool    getChar(char * c)
-    // bool    isOpen() const
+    bool    isOpen() const;
     // bool    isReadable() const
     // bool    isTextModeEnabled() const
     // bool    isWritable() const
