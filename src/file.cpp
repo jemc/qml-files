@@ -113,8 +113,6 @@ bool    wQFile::isOpen() const
 
 // OpenMode    wQFile::openMode() const
 
-// qint64  wQFile::peek(char * data, qint64 maxSize)
-
 #define LATIN1_CHARS \
 " !\"#$&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
@@ -124,8 +122,6 @@ QString  wQFile::peek(qint64 maxSize)
 
 // bool    wQFile::putChar(char c)
 
-// qint64  wQFile::read(char * data, qint64 maxSize)
-
 QString  wQFile::read(qint64 maxSize)
 { WQ_PRIV(QFile);
   return QString::fromLatin1(o->read(maxSize).toPercentEncoding(LATIN1_CHARS)); };
@@ -134,9 +130,11 @@ QString  wQFile::readAll()
 { WQ_PRIV(QFile);
   return QString::fromLatin1(o->readAll().toPercentEncoding(LATIN1_CHARS)); };
 
-// qint64  wQFile::readLine(char * data, qint64 maxSize)
+QString  wQFile::readLine(qint64 maxSize)
+{ WQ_PRIV(QFile);
+  if(maxSize > 0) maxSize++; // Add extra char for the null byte appended
+  return QString::fromLatin1(o->readLine(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
-// QByteArray  wQFile::readLine(qint64 maxSize = 0)
 
 bool    wQFile::reset()
 { WQ_PRIV(QFile); return o->reset(); };

@@ -54,7 +54,7 @@ TestCase {
     file.close()
   }
   
-  function test_readAll_truncate() {
+  function test_readAll_truncate_readLine() {
     verify(file.open(File.ReadWrite|File.Truncate))
     compare(file.readAll(), "")
     compare(file.write("test"), 4)
@@ -64,6 +64,21 @@ TestCase {
     
     verify(file.open(File.ReadWrite|File.Truncate))
     compare(file.readAll(), "")
+    file.close()
+    
+    verify(file.open(File.ReadWrite|File.Truncate))
+    compare(file.readAll(), "")
+    compare(file.write("test\n"), 5)
+    compare(file.write("the_"), 4)
+    compare(file.write("rest\n"), 5)
+    verify(file.reset())
+    compare(file.readLine(), "test%0A")
+    compare(file.readLine(), "the_rest%0A")
+    verify(file.reset())
+    compare(file.readLine(4), "test")
+    compare(file.readLine(), "%0A")
+    compare(file.readLine(4), "the_")
+    compare(file.readLine(), "rest%0A")
     file.close()
   }
 }

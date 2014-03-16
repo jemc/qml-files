@@ -85,8 +85,7 @@ public slots:
     // bool    putChar(char c)
     QString  read(qint64 maxSize);
     QString  readAll();
-    // qint64  readLine(char * data, qint64 maxSize)
-    // QByteArray  readLine(qint64 maxSize = 0)
+    QString  readLine(qint64 maxSize = 0);
     bool    reset();
     // bool    seek(qint64 pos)
     // void    setTextModeEnabled(bool enabled)
