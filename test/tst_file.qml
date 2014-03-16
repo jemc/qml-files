@@ -101,4 +101,14 @@ TestCase {
     compare(file.readAll(), "foo")
     file.close()
   }
+  
+  function test_permissions() {
+    verify((grep.permissions & File.ReadUser))
+    verify(!(grep.permissions & File.WriteUser))
+    verify((grep.permissions & File.ExeUser))
+    
+    verify((file.permissions & File.ReadUser))
+    verify((file.permissions & File.WriteUser))
+    verify(!(file.permissions & File.ExeUser))
+  }
 }

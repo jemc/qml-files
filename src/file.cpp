@@ -45,12 +45,14 @@ QString wQFile::fileName() const
 bool    wQFile::open(OpenMode mode)
 { WQ_PRIV(QFile); return o->open((QIODevice::OpenMode)mode); };
 
-// Permissions wQFile::permissions() const
+wQFile::Permissions wQFile::permissions() const
+{ WQ_PRIV(const QFile); return (wQFile::Permissions)(int)o->permissions(); };
 
 bool    wQFile::resize(qint64 sz)
 { WQ_PRIV(QFile); return o->resize(sz); };
 
-// bool    wQFile::setPermissions(Permissions permissions)
+// bool    wQFile::setPermissions(wQFile::Permissions permissions)
+// { WQ_PRIV(QFile); return o->setPermissions((QFileDevice::Permissions)(int)permissions); };
 
 qint64  wQFile::size() const
 { WQ_PRIV(const QFile); return o->size(); };

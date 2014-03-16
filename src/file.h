@@ -14,7 +14,8 @@ class wQFile : public QObject, public QQmlParserStatus
     WQ_DECL_PRIV(QFile)
     Q_INTERFACES(QQmlParserStatus)
     
-    Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
+    Q_PROPERTY(QString     fileName    READ fileName    WRITE setFileName)
+    Q_PROPERTY(Permissions permissions READ permissions)
     
     Q_PROPERTY(bool    exists        READ exists)
     Q_PROPERTY(QString symLinkTarget READ symLinkTarget)
@@ -36,6 +37,22 @@ public:
     };
     Q_ENUMS(OpenMode)
     
+    enum Permissions {
+        ReadOwner  = QFileDevice::ReadOwner,
+        WriteOwner = QFileDevice::WriteOwner,
+        ExeOwner   = QFileDevice::ExeOwner,
+        ReadUser   = QFileDevice::ReadUser,
+        WriteUser  = QFileDevice::WriteUser,
+        ExeUser    = QFileDevice::ExeUser,
+        ReadGroup  = QFileDevice::ReadGroup,
+        WriteGroup = QFileDevice::WriteGroup,
+        ExeGroup   = QFileDevice::ExeGroup,
+        ReadOther  = QFileDevice::ReadOther,
+        WriteOther = QFileDevice::WriteOther,
+        ExeOther   = QFileDevice::ExeOther,
+    };
+    Q_ENUMS(Permissions)
+    
     
 protected:
     void classBegin();
@@ -54,7 +71,7 @@ public slots:
     
     QString fileName() const;
     bool    open(OpenMode mode);
-    // Permissions permissions() const;
+    Permissions permissions() const;
     bool    resize(qint64 sz);
     // bool    setPermissions(Permissions permissions);
     qint64  size() const;
