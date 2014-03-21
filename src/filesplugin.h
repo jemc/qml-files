@@ -7,6 +7,7 @@
 #include "dir.h"
 #include "file.h"
 #include "file_system_watcher.h"
+#include "standard_paths.h"
 
 
 class TetheredPlugin : public QQmlExtensionPlugin
@@ -21,6 +22,8 @@ public:
         qmlRegisterType<FileInfoAttached>();
         qmlRegisterType<Dir>(uri, 1, 0, "Dir");
         qmlRegisterType<DirAttached>();
+        qmlRegisterType<StandardPaths>(uri, 1, 0, "StandardPaths");
+        qmlRegisterType<StandardPathsAttached>();
         qmlRegisterType<FileSystemWatcher>(uri, 1, 0, "FileSystemWatcher");
         
         qmlRegisterType<wQFile>(uri, 1, 0, "File");

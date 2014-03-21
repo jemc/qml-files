@@ -17,11 +17,13 @@ HEADERS += $$SRCDIR/filesplugin.h           \
            $$SRCDIR/dir.h                   \
            $$SRCDIR/file_info.h             \
            $$SRCDIR/file_system_watcher.h   \
+           $$SRCDIR/standard_paths.h        \
            $$SRCDIR/file.h                  
 
 SOURCES += $$SRCDIR/dir.cpp                 \
            $$SRCDIR/file_info.cpp           \
            $$SRCDIR/file_system_watcher.cpp \
+           $$SRCDIR/standard_paths.cpp      \
            $$SRCDIR/file.cpp                
 
 OBJECTS_DIR = $$BUILDDIR/.obj
