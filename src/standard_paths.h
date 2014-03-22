@@ -49,8 +49,9 @@ private:
     QObject* m_attached = NULL;
     
 public slots:
-    QString writableLocation(uint type);
     void setTestModeEnabled(bool testMode);
+    QStringList standardLocations(uint type);
+    QString writableLocation(uint type);
 };
 
 

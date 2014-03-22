@@ -35,6 +35,15 @@ TestCase {
     }
   }
   
+  function test_standardLocations() {
+    for(var type in types) {
+      var paths = StandardPaths.standardLocations(type)
+      verify(paths.length > 0)
+      for(var path in paths)
+        verify(path.length > 0)
+    }
+  }
+  
   function test_testMode_writableLocation() {
     var allSame = true
     for(var type in types) {
