@@ -8,5 +8,8 @@ QObject* StandardPaths::qmlAttachedProperties(QObject* object)
 }
 
 
+void StandardPathsAttached::setTestModeEnabled(bool testMode)
+{ QStandardPaths::setTestModeEnabled(testMode); }
+
 QString StandardPathsAttached::writableLocation(uint type)
 { return QStandardPaths::writableLocation((QStandardPaths::StandardLocation)type); }

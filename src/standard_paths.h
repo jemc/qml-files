@@ -50,6 +50,7 @@ private:
     
 public slots:
     QString writableLocation(uint type);
+    void setTestModeEnabled(bool testMode);
 };
 
 

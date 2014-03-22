@@ -31,8 +31,20 @@ TestCase {
   function test_writableLocation() {
     for(var type in types) {
       var path = StandardPaths.writableLocation(type)
-      console.log(path)
       verify(path.length > 0)
     }
+  }
+  
+  function test_testMode_writableLocation() {
+    var allSame = true
+    for(var type in types) {
+      var path1 = StandardPaths.writableLocation(type)
+      StandardPaths.setTestModeEnabled(true)
+      var path2 = StandardPaths.writableLocation(type)
+      StandardPaths.setTestModeEnabled(false)
+      verify(path2.length > 0)
+      allSame = allSame && (path1 == path2)
+    }
+    verify(!allSame)
   }
 }
