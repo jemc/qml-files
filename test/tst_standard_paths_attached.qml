@@ -28,6 +28,13 @@ TestCase {
     StandardPaths.DownloadLocation,
   ]
   
+  function test_displayName() {
+    for(var type in types) {
+      var descrip = StandardPaths.displayName(type)
+      verify(descrip.length > 0)
+    }
+  }
+  
   function test_writableLocation() {
     for(var type in types) {
       var path = StandardPaths.writableLocation(type)

@@ -8,6 +8,9 @@ QObject* StandardPaths::qmlAttachedProperties(QObject* object)
 }
 
 
+QString StandardPathsAttached::displayName(uint type)
+{ return QStandardPaths::displayName((QStandardPaths::StandardLocation)type); }
+
 void StandardPathsAttached::setTestModeEnabled(bool testMode)
 { QStandardPaths::setTestModeEnabled(testMode); }
 
