@@ -2,7 +2,7 @@
 #include "file.h"
 
 
-wQFile::wQFile(QObject *parent) { Q_UNUSED(parent); WQ_INIT_PRIV(QFile); }
+wQFile::wQFile(QObject *parent) { Q_UNUSED(parent); }
 
 void wQFile::classBegin() { }
 
@@ -16,7 +16,7 @@ void wQFile::componentComplete() { }
 // bool    wQFile::copy(const QString & newName)
 
 bool    wQFile::exists() const
-{ WQ_PRIV(const QFile); return o->exists(); };
+{ return qfile.exists(); };
 
 // bool    wQFile::link(const QString & linkName)
 
@@ -29,10 +29,10 @@ bool    wQFile::exists() const
 // bool    wQFile::rename(const QString & newName)
 
 void    wQFile::setFileName(const QString & name)
-{ WQ_PRIV(QFile); return o->setFileName(name); };
+{ return qfile.setFileName(name); };
 
 QString wQFile::symLinkTarget() const
-{ WQ_PRIV(const QFile); return o->symLinkTarget(); };
+{ return qfile.symLinkTarget(); };
 
 
 ///
@@ -40,22 +40,22 @@ QString wQFile::symLinkTarget() const
 
 
 QString wQFile::fileName() const
-{ WQ_PRIV(const QFile); return o->fileName(); };
+{ return qfile.fileName(); };
 
 bool    wQFile::open(OpenMode mode)
-{ WQ_PRIV(QFile); return o->open((QIODevice::OpenMode)mode); };
+{ return qfile.open((QIODevice::OpenMode)mode); };
 
 wQFile::Permissions wQFile::permissions() const
-{ WQ_PRIV(const QFile); return (wQFile::Permissions)(int)o->permissions(); };
+{ return (wQFile::Permissions)(int)qfile.permissions(); };
 
 bool    wQFile::resize(qint64 sz)
-{ WQ_PRIV(QFile); return o->resize(sz); };
+{ return qfile.resize(sz); };
 
 // bool    wQFile::setPermissions(wQFile::Permissions permissions)
-// { WQ_PRIV(QFile); return o->setPermissions((QFileDevice::Permissions)(int)permissions); };
+// { return qfile.setPermissions((QFileDevice::Permissions)(int)permissions); };
 
 qint64  wQFile::size() const
-{ WQ_PRIV(const QFile); return o->size(); };
+{ return qfile.size(); };
 
 
 ///
@@ -82,15 +82,15 @@ qint64  wQFile::size() const
 // bool    wQFile::atEnd() const
 
 void    wQFile::close()
-{ WQ_PRIV(QFile); return o->close(); };
+{ return qfile.close(); };
 
 // bool    wQFile::isSequential() const
 
 qint64  wQFile::pos() const
-{ WQ_PRIV(const QFile); return o->pos(); };
+{ return qfile.pos(); };
 
 bool    wQFile::seek(qint64 pos)
-{ WQ_PRIV(QFile); return o->seek(pos); };
+{ return qfile.seek(pos); };
 
 
 ///
@@ -98,7 +98,7 @@ bool    wQFile::seek(qint64 pos)
 
 
 qint64  wQFile::bytesAvailable() const
-{ WQ_PRIV(const QFile); return o->bytesAvailable(); };
+{ return qfile.bytesAvailable(); };
 
 // qint64  wQFile::bytesToWrite() const
 
@@ -109,7 +109,7 @@ qint64  wQFile::bytesAvailable() const
 // bool    wQFile::getChar(char * c)
 
 bool    wQFile::isOpen() const
-{ WQ_PRIV(const QFile); return o->isOpen(); };
+{ return qfile.isOpen(); };
 
 // bool    wQFile::isReadable() const
 
@@ -123,27 +123,23 @@ bool    wQFile::isOpen() const
 " !\"#$&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
 QString  wQFile::peek(qint64 maxSize)
-{ WQ_PRIV(QFile);
-  return QString::fromLatin1(o->peek(maxSize).toPercentEncoding(LATIN1_CHARS)); };
+{ return QString::fromLatin1(qfile.peek(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
 // bool    wQFile::putChar(char c)
 
 QString  wQFile::read(qint64 maxSize)
-{ WQ_PRIV(QFile);
-  return QString::fromLatin1(o->read(maxSize).toPercentEncoding(LATIN1_CHARS)); };
+{ return QString::fromLatin1(qfile.read(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
 QString  wQFile::readAll()
-{ WQ_PRIV(QFile);
-  return QString::fromLatin1(o->readAll().toPercentEncoding(LATIN1_CHARS)); };
+{ return QString::fromLatin1(qfile.readAll().toPercentEncoding(LATIN1_CHARS)); };
 
 QString  wQFile::readLine(qint64 maxSize)
-{ WQ_PRIV(QFile);
-  if(maxSize > 0) maxSize++; // Add extra char for the null byte appended
-  return QString::fromLatin1(o->readLine(maxSize).toPercentEncoding(LATIN1_CHARS)); };
+{ if(maxSize > 0) maxSize++; // Add extra char for the null byte appended
+  return QString::fromLatin1(qfile.readLine(maxSize).toPercentEncoding(LATIN1_CHARS)); };
 
 
 bool    wQFile::reset()
-{ WQ_PRIV(QFile); return o->reset(); };
+{ return qfile.reset(); };
 
 // void    wQFile::setTextModeEnabled(bool enabled)
 
@@ -154,5 +150,4 @@ bool    wQFile::reset()
 // bool    wQFile::waitForReadyRead(int msecs)
 
 qint64  wQFile::write(const QString & string)
-{ WQ_PRIV(QFile);
-  return o->write(QByteArray::fromPercentEncoding(string.toLatin1())); };
+{ return qfile.write(QByteArray::fromPercentEncoding(string.toLatin1())); };

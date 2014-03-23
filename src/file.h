@@ -5,14 +5,10 @@
 #include <QtQml>
 #include <QFile>
 
-#include "wq_priv.h"
 
-
-class wQFile : public QObject, public QQmlParserStatus
+class wQFile : public QObject
 {
     Q_OBJECT
-    WQ_DECL_PRIV(QFile)
-    Q_INTERFACES(QQmlParserStatus)
     
     Q_PROPERTY(QString     fileName    READ fileName    WRITE setFileName)
     
@@ -55,6 +51,8 @@ public:
     };
     Q_ENUMS(Permissions)
     
+private:
+    QFile qfile;
     
 protected:
     void classBegin();
