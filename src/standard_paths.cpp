@@ -11,6 +11,9 @@ QObject* StandardPaths::qmlAttachedProperties(QObject* object)
 QString StandardPathsAttached::displayName(uint type)
 { return QStandardPaths::displayName((QStandardPaths::StandardLocation)type); }
 
+QString StandardPathsAttached::findExecutable(const QString& executableName)
+{ return QStandardPaths::findExecutable(executableName); }
+
 void StandardPathsAttached::setTestModeEnabled(bool testMode)
 { QStandardPaths::setTestModeEnabled(testMode); }
 

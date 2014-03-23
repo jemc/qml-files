@@ -35,6 +35,13 @@ TestCase {
     }
   }
   
+  function test_findExecutable() {
+    var paths = StandardPaths.findExecutable("grep")
+    verify(paths.length > 0)
+    for(var path in paths)
+      verify(path.length > 0)
+  }
+  
   function test_writableLocation() {
     for(var type in types) {
       var path = StandardPaths.writableLocation(type)

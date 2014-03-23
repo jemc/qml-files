@@ -50,6 +50,7 @@ private:
     
 public slots:
     QString displayName(uint type);
+    QString findExecutable(const QString& executableName);
     void setTestModeEnabled(bool testMode);
     QStringList standardLocations(uint type);
     QString writableLocation(uint type);
