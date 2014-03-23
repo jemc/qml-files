@@ -6,7 +6,7 @@ import org.jemc.qml.Files 1.0
 
 TestCase {
   id: test
-  name: "StandardPaths"
+  name: "StandardPathsAttached"
   
   property var types: [
     StandardPaths.DesktopLocation,
