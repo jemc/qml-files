@@ -8,11 +8,11 @@ TestCase {
   id: test
   name: "File"
   
-  File { id:grep; fileName:"/usr/bin/grep" }
+  File { id:grep; fileName:StandardPaths.findExecutable("grep") }
   File { id:file; fileName:"/tmp/qfile" }
   
   function test_it() {
-    compare(grep.fileName, "/usr/bin/grep")
+    verify(grep.fileName.length > 0)
     verify(grep.exists)
     verify(grep.size > 1)
     compare(grep.symLinkTarget,"")
