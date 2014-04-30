@@ -2,6 +2,12 @@
 #include "file.h"
 
 
+QObject* wQFile::qmlAttachedProperties(QObject* object)
+{
+    return new wQFileAttached(object);
+}
+
+
 wQFile::wQFile(QObject *parent) { Q_UNUSED(parent); }
 
 void wQFile::classBegin() { }

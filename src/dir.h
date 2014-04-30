@@ -154,6 +154,9 @@ public slots:
     QString tempPath();
     QString toNativeSeparators(const QString & pathName);
     
+    // Convenience constructor
+    Dir* _(QString path) { return new Dir(QDir(path)); };
+    
 public:
     DirAttached(QObject* attached)
     { m_attached = attached; };

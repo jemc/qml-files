@@ -21,7 +21,10 @@ class wQFile : public QObject
     Q_PROPERTY(bool        isOpen         READ isOpen)
     
 public:
+    static QObject* qmlAttachedProperties(QObject* object);
+    
     wQFile(QObject *parent=0);
+    wQFile(const QString& path) { qfile.setFileName(path); };
     
     enum OpenMode {
         NotOpen    = QIODevice::NotOpen,
@@ -115,6 +118,29 @@ signals:
     // void    readChannelFinished()
     // void    readyRead()
 };
+
+
+class wQFileAttached : public QObject
+{
+    Q_OBJECT
+    
+public slots:
+    
+    // Convenience constructor
+    wQFile* _(QString path) {
+        return new wQFile(path);
+    };
+    
+public:
+    wQFileAttached(QObject* attached)
+    { m_attached = attached; };
+    
+private:
+    QObject* m_attached = NULL;
+};
+
+
+QML_DECLARE_TYPEINFO(wQFile, QML_HAS_ATTACHED_PROPERTIES)
 
 
 #endif
