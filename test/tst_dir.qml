@@ -51,4 +51,11 @@ TestCase {
     data.dir.mkdir("testdir")
     verify(data.dir.entryList.indexOf("testdir") > -1)
   }
+  
+  Dir { id:dirHandlesSignals // Verifies that each notify signal exists
+    onPathChanged:        { }
+    onNameFiltersChanged: { }
+    onFilterChanged:      { }
+    onSortingChanged:     { }
+  }
 }

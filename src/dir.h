@@ -50,11 +50,11 @@ public:
     Q_ENUMS(SortFlags)
     
 private:
-    Q_PROPERTY(QString     path          READ path           WRITE setPath)
+    Q_PROPERTY(QString     path          READ path        WRITE setPath         NOTIFY pathChanged)
     
-    Q_PROPERTY(QStringList nameFilters   READ nameFilters    WRITE setNameFilters)
-    Q_PROPERTY(Filters     filter        READ filter         WRITE setFilter)
-    Q_PROPERTY(SortFlags   sorting       READ sorting        WRITE setSorting)
+    Q_PROPERTY(QStringList nameFilters   READ nameFilters WRITE setNameFilters  NOTIFY nameFiltersChanged)
+    Q_PROPERTY(Filters     filter        READ filter      WRITE setFilter       NOTIFY filterChanged)
+    Q_PROPERTY(SortFlags   sorting       READ sorting     WRITE setSorting      NOTIFY sortingChanged)
     
     Q_PROPERTY(QString     absolutePath  READ absolutePath)
     Q_PROPERTY(QString     canonicalPath READ canonicalPath)
@@ -66,6 +66,12 @@ private:
     Q_PROPERTY(bool        isReadable    READ isReadable)
     Q_PROPERTY(bool        isRelative    READ isRelative)
     Q_PROPERTY(bool        isRoot        READ isRoot)
+    
+signals:
+    void pathChanged();
+    void nameFiltersChanged();
+    void filterChanged();
+    void sortingChanged();
     
 public:
     static QObject* qmlAttachedProperties(QObject* object);
