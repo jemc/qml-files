@@ -20,6 +20,8 @@ class wQFile : public QObject
     Q_PROPERTY(qint64      bytesAvailable READ bytesAvailable)
     Q_PROPERTY(bool        isOpen         READ isOpen)
     
+    Q_PROPERTY(QString     md5            READ md5)
+    
 public:
     static QObject* qmlAttachedProperties(QObject* object);
     
@@ -111,6 +113,21 @@ public slots:
     // bool    waitForBytesWritten(int msecs)
     // bool    waitForReadyRead(int msecs)
     qint64  write(const QString & string);
+    
+    // Compute the MD5 hash of the file, and return it, as a hex string
+    QString md5() {
+        bool wasOpen = this->isOpen();
+        this->open(OpenMode::ReadOnly);
+        
+        QCryptographicHash* hash = new QCryptographicHash(QCryptographicHash::Md5);
+        hash->addData(&qfile);
+        QString result = QString(hash->result().toHex());
+        
+        if(!wasOpen) this->close();
+        delete hash;
+        
+        return result;
+    }
     
 signals:
     // void    aboutToClose()

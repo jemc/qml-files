@@ -129,4 +129,8 @@ TestCase {
     verify((file.permissions & File.WriteUser))
     verify(!(file.permissions & File.ExeUser))
   }
+  
+  function test_md5() {
+    compare(grep.md5.length, 32)
+  }
 }
