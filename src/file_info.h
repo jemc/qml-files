@@ -12,6 +12,45 @@ class FileInfo : public QObject
 {
     Q_OBJECT
     
+    Q_PROPERTY(Dir*               absoluteDir       READ absoluteDir)
+    Q_PROPERTY(QString            absoluteFilePath  READ absoluteFilePath)
+    Q_PROPERTY(QString            absolutePath      READ absolutePath)
+    Q_PROPERTY(QString            baseName          READ baseName)
+    Q_PROPERTY(QString            bundleName        READ bundleName)
+    Q_PROPERTY(bool               caching           READ caching)
+    Q_PROPERTY(QString            canonicalFilePath READ canonicalFilePath)
+    Q_PROPERTY(QString            canonicalPath     READ canonicalPath)
+    Q_PROPERTY(QString            completeBaseName  READ completeBaseName)
+    Q_PROPERTY(QString            completeSuffix    READ completeSuffix)
+    Q_PROPERTY(QDateTime          created           READ created)
+    Q_PROPERTY(Dir*               dir               READ dir)
+    Q_PROPERTY(bool               exists            READ exists)
+    Q_PROPERTY(QString            fileName          READ fileName)
+    Q_PROPERTY(QString            filePath          READ filePath)
+    Q_PROPERTY(QString            group             READ group)
+    Q_PROPERTY(uint               groupId           READ groupId)
+    Q_PROPERTY(bool               isAbsolute        READ isAbsolute)
+    Q_PROPERTY(bool               isBundle          READ isBundle)
+    Q_PROPERTY(bool               isDir             READ isDir)
+    Q_PROPERTY(bool               isExecutable      READ isExecutable)
+    Q_PROPERTY(bool               isFile            READ isFile)
+    Q_PROPERTY(bool               isHidden          READ isHidden)
+    Q_PROPERTY(bool               isNativePath      READ isNativePath)
+    Q_PROPERTY(bool               isReadable        READ isReadable)
+    Q_PROPERTY(bool               isRelative        READ isRelative)
+    Q_PROPERTY(bool               isRoot            READ isRoot)
+    Q_PROPERTY(bool               isSymLink         READ isSymLink)
+    Q_PROPERTY(bool               isWritable        READ isWritable)
+    Q_PROPERTY(QDateTime          lastModified      READ lastModified)
+    Q_PROPERTY(QDateTime          lastRead          READ lastRead)
+    Q_PROPERTY(QString            owner             READ owner)
+    Q_PROPERTY(uint               ownerId           READ ownerId)
+    Q_PROPERTY(QString            path              READ path)
+    // Q_PROPERTY(QFile::Permissions permissions       READ permissions)
+    Q_PROPERTY(qint64             size              READ size)
+    Q_PROPERTY(QString            suffix            READ suffix)
+    Q_PROPERTY(QString            symLinkTarget     READ symLinkTarget)
+    
 public:
     static QObject* qmlAttachedProperties(QObject* object);
     
@@ -77,6 +116,9 @@ class FileInfoAttached : public QObject
     
 public slots:
     bool exists(const QString & file);
+    
+    // Convenience constructor
+    FileInfo* _(QString path) { return new FileInfo(QFileInfo(path)); };
     
 public:
     FileInfoAttached(QObject* attached)
