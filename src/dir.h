@@ -5,8 +5,6 @@
 #include <QtQml>
 #include <QDir>
 
-// typedef QDir::Filters Filters;
-
 
 class Dir : public QObject
 {
