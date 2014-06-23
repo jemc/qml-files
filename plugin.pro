@@ -12,6 +12,13 @@ DESTDIR  = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
 SRCDIR   = $$PWD/src
 BUILDDIR = $$PWD/build
 
+android {
+  VENDORDIR = $$PWD/vendor/prefix/$(TOOLCHAIN_NAME)
+  BUILDDIR  = $$PWD/build/$(TOOLCHAIN_NAME)
+  QMAKE_LIBDIR += $$VENDORDIR/lib
+  QMAKE_INCDIR += $$VENDORDIR/include
+}
+
 HEADERS += $$SRCDIR/filesplugin.h           \
            $$SRCDIR/dir.h                   \
            $$SRCDIR/file_info.h             \
