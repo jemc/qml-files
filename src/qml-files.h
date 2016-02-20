@@ -10,7 +10,7 @@
 #include "standard_paths.h"
 
 
-class TetheredPlugin : public QQmlExtensionPlugin
+class QmlFilesPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")

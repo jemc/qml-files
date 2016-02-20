@@ -1,25 +1,24 @@
 
 TEMPLATE = lib
 
-CONFIG += plugin \
-          c++11
-QT += qml quick
+CONFIG += qt plugin c++11
+QT     += qml quick
 
-TARGET = $$qtLibraryTarget(filesplugin)
+TARGET = $$qtLibraryTarget(qml-files)
 uri = org.jemc.qml.Files
 
-DESTDIR  = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
-SRCDIR   = $$PWD/src
-BUILDDIR = $$PWD/build
+TARGETDIR = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
+SRCDIR    = $$PWD/src
+DESTDIR   = $$PWD/build/native
 
 android {
   VENDORDIR = $$PWD/vendor/prefix/$(TOOLCHAIN_NAME)
-  BUILDDIR  = $$PWD/build/$(TOOLCHAIN_NAME)
+  DESTDIR   = $$PWD/build/$(TOOLCHAIN_NAME)
   QMAKE_LIBDIR += $$VENDORDIR/lib
   QMAKE_INCDIR += $$VENDORDIR/include
 }
 
-HEADERS += $$SRCDIR/filesplugin.h           \
+HEADERS += $$SRCDIR/qml-files.h             \
            $$SRCDIR/dir.h                   \
            $$SRCDIR/file_info.h             \
            $$SRCDIR/file_system_watcher.h   \
@@ -32,18 +31,13 @@ SOURCES += $$SRCDIR/dir.cpp                 \
            $$SRCDIR/standard_paths.cpp      \
            $$SRCDIR/file.cpp                
 
-OBJECTS_DIR = $$BUILDDIR/.obj
-MOC_DIR     = $$BUILDDIR/.moc
-RCC_DIR     = $$BUILDDIR/.rcc
-UI_DIR      = $$BUILDDIR/.ui
+OBJECTS_DIR = $$DESTDIR/.obj
+MOC_DIR     = $$DESTDIR/.moc
+RCC_DIR     = $$DESTDIR/.rcc
+UI_DIR      = $$DESTDIR/.ui
 
-target.path  = $$DESTDIR
-qmldir.files = $$PWD/qmldir
-qmldir.path  = $$DESTDIR
+target.path   = $$TARGETDIR
+qmldir.files += $$SRCDIR/qmldir $$SRCDIR/qml/*
+qmldir.path   = $$TARGETDIR
 
-OTHER_FILES += $$SRCDIR/qmldir
-
-INSTALLS    += target qmldir
-
-# Copy the qmldir file to the same folder as the plugin binary
-QMAKE_POST_LINK += $$QMAKE_COPY $$replace($$list($$quote($$SRCDIR/qmldir) $$DESTDIR), /, $$QMAKE_DIR_SEP)
+INSTALLS += target qmldir
