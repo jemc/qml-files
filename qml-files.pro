@@ -36,8 +36,10 @@ MOC_DIR     = $$DESTDIR/.moc
 RCC_DIR     = $$DESTDIR/.rcc
 UI_DIR      = $$DESTDIR/.ui
 
-target.path   = $$TARGETDIR
-qmldir.files += $$SRCDIR/qmldir $$SRCDIR/qml/*
-qmldir.path   = $$TARGETDIR
+target.path  = $$TARGETDIR
+qmldir.files = $$SRCDIR/qmldir
+qmldir.path  = $$TARGETDIR
+qml.files    = $$SRCDIR/qml/*
+qml.path     = $$TARGETDIR/qml
 
-INSTALLS += target qmldir
+INSTALLS += target qmldir qml
