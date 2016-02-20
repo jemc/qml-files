@@ -1,2 +1,2 @@
 module org.jemc.qml.Files
-plugin filesplugin
+plugin qml-files
